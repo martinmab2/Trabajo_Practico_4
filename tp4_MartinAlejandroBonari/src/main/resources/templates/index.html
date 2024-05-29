@@ -1,22 +1,362 @@
 <!DOCTYPE html>
 <html>
-<head xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta charset="UTF-8">
 <title>Facultad De Ingenieria (UNJU)</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
 </head>
 <body>
-	<header>
-		<h1>Facultad De Ingenieria - UNJU</h1>
-		<img src="/images/logotipo.png">
-		<br>
-		<nav>
-		
+	<header class="bg-body-tertiary">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-4 text-center text-md-start">
+					<h1>Facultad De Ingenieria - UNJU</h1>
+				</div>
+				<div class="col-md-4 text-center text-md-center">
+					<h2 style="font-style: italic;">"Cada desafío es una
+						oportunidad de aprender y crecer"</h2>
+				</div>
+				<div class="col-md-4 text-center text-md-end">
+					<img src="/images/logo.png"
+						alt="Logotipo de la Facultad de Ingeniería - UNJU"
+						class="img-fluid" style="max-height: 100px;">
+				</div>
+			</div>
+		</div>
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-primary border border-black mt-3">
+			<div class="container">
+				<a class="navbar-brand" href="#inicio">Inicio</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link" href="#footer">Acerca
+								De</a></li>
+						<li class="nav-item"><a class="nav-link" href="#noticias">Noticias</a>
+						</li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Carreras </a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#pregrado">Pregrado</a></li>
+								<li><a class="dropdown-item" href="#grado">Grado</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#">Posgrados</a></li>
+								<li><a class="dropdown-item" href="#">Doctorados</a></li>
+								<li><a class="dropdown-item" href="#">Maestrias</a></li>
+							</ul></li>
+						<li class="nav-item"><a class="nav-link" href="https://www.fi.unju.edu.ar/servicios/telefonos.html">Contactos</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</nav>
 	</header>
-	<aside>
-	</aside>
-	<footer>
-		<img src="/images/logotipo.png">
+	<main class="container-fluid col-10">
+		<div class="row my-5">
+			<div class="bg-primary">
+				<div class="row text-center align-items-center">
+					<div class="col-md-4">
+						<img src="/images/logotipo.png" class="img-fluid" alt="Logotipo">
+					</div>
+					<div class="col-md-4">
+						<h2 class="text-white">Campus - FI</h2>
+					</div>
+					<div class="col-md-4">
+						<img src="/images/idea.png" class="img-fluid" alt="Idea">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<section>
+					<h2>Historia</h2>
+					<p>La Universidad nace el 25 de mayo de 1972 como universidad
+						provincial y al año siguiente se transforma en Universidad
+						Nacional. Comienza a funcionar sobre la base de cuatro carreras:
+						Ingeniería Agronómica, Ingeniería de Minas, Ingeniería Metalúrgica
+						e Ingeniería Química. Su propósito fue apuntalar las actividades
+						de explotación e industrialización de los recursos naturales de
+						Jujuy. Las tres últimas carreras mencionadas pasan a constituir la
+						actual Facultad de Ingeniería que, con el transcurso de los años,
+						sumó a ellas un número importante de otras carreras.</p>
+				</section>
+				<section>
+					<h2>Misión y Visión</h2>
+					<p>Las políticas de la Universidad Nacional de Jujuy, y
+						especialmente de la Facultad de Ingeniería, tienden a ampliar el
+						área de influencia y a fortalecer su acción institucional, en
+						respuesta a la demanda social creciente de formación de recursos
+						humanos que contribuyan al desarrollo científico, tecnológico y
+						cultural.</p>
+				</section>
+				<section>
+					<h2>Contribuciones al Desarrollo Regional</h2>
+					<p>De esta forma, la Facultad se constituyó en vector de
+						desarrollo de la provincia, por cuanto:</p>
+					<ul>
+						<li>Posibilita la prosecución de estudios superiores a los
+							jóvenes egresados del nivel medio, facilitando a un número
+							creciente de ellos la obtención de un título universitario, sin
+							los inconvenientes del desarraigo que tradicionalmente debían
+							afrontar al trasladarse a centros universitarios radicados en
+							otras provincias.</li>
+						<li>Aporta a la economía provincial al evitar la salida de
+							recursos económicos asociados con la radicación de estudiantes en
+							otras provincias.</li>
+						<li>Posibilita acceder a títulos universitarios a jóvenes
+							cuya situación económica les impide estudiar fuera de la
+							provincia.</li>
+						<li>Provee de profesionales de la Ingeniería a las industrias
+							radicadas en la provincia y de profesionales competentes a las
+							diversas reparticiones del estado provincial.</li>
+						<li>Incorpora a la sociedad profesionales aptos para generar
+							emprendimientos de distinta índole.</li>
+						<li>Mantiene fluidas relaciones institucionales con el sector
+							productivo, las ONG, el ámbito educativo y la administración
+							pública provincial mediante prestaciones de servicios, el
+							desarrollo de actividades de investigación científica y
+							tecnológica, y la formación y capacitación de recursos humanos. A
+							la vez, dentro de este marco, promueve sistemas de pasantías para
+							sus docentes y alumnos.</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Proyección Internacional</h2>
+					<p>En la actualidad, las particularidades geopolíticas del área
+						de influencia de la Facultad le otorgan una importante proyección
+						internacional; proyección nacida tanto por el impacto regional
+						producido por la globalización y en particular por los acuerdos
+						suscriptos por nuestro país en el marco del Mercosur, como por la
+						habilitación de nuevos pasos fronterizos en la provincia los
+						cuales la integran regionalmente mediante el corredor bioceánico.
+						Esta realidad permite que Jujuy pase de ser una provincia muy
+						alejada de los puertos argentinos a otra que está sobre la línea
+						de unión entre los puertos comerciales del norte de Chile con los
+						de Brasil. Por ende, de disponer como única salida comercial el
+						puerto de Buenos Aires a 1700 km, ahora está a tan sólo 700 km del
+						de Antofagasta (Chile). Todo ello constituye a la vez una
+						oportunidad y un desafío para la economía regional, y en
+						consecuencia para la Facultad.</p>
+				</section>
+			</div>
+			<div class="col-md-3 bg-primary">
+				<aside>
+					<nav class="nav flex-column bg-primary p-3">
+						<a class="nav-link active text-white" aria-current="page" href="https://www.fi.unju.edu.ar/servicios/biblioteca.html">Biblioteca</a>
+						<a class="nav-link text-white" href="https://www.fi.unju.edu.ar/secretarias/sec-academica/calendario-academico.html">Calendario Académico</a> <a
+							class="nav-link text-white" href="https://www.fi.unju.edu.ar/investigacion-noticias.html">Investigación</a> <a
+							class="nav-link text-white" href="https://www.fi.unju.edu.ar/component/search/?searchword=laboratori&searchphrase=all&Itemid=288">Laboratorios</a>
+					</nav>
+				</aside>
+			</div>
+		</div>
+		<section class="container my-5">
+			<div class="mb-3 d-flex justify-content-center">
+				<h3 id="noticias">Noticias Destacadas</h3>
+			</div>
+			<div class="card-group row">
+				<div class="mb-3 col-4">
+					<div class="card h-100">
+						<img src="/images/noticia1.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Segundo y Tercer Encuentro de los
+								Talleres de Capacitación de "AUTOCUIDADO Y EMOCIONES" para No
+								Docentes de la FI UNJu</h5>
+							<p class="card-text">Durante los días 15 y 22 de mayo, se
+								llevaron a cabo con éxito el segundo y tercer encuentro de los
+								Talleres de Capacitación de "AUTOCUIDADO Y EMOCIONES" destinados
+								a los no docentes de la Facultad de Ingeniería de la Universidad
+								Nacional de Jujuy (FI UNJu). Ambas sesiones se realizaron de
+								8:00 a 9:00 a.m. en el Aula 15 de la Facultad de Ingeniería.</p>
+							<p class="card-text">
+								<small class="text-body-secondary">Last updated 3 mins
+									ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 col-4">
+					<div class="card h-100">
+						<img src="/images/noticia2.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Renovación de convenio académico
+								entre la Facultad de Ingeniería y el Municipio de la Ciudad
+								Perico</h5>
+							<p class="card-text">En horas de la mañana del jueves 23 de
+								mayo del presente año, la Facultad de Ingeniería de la UNJu
+								realizó la firma del acta acuerdo de colaboración académica con
+								la Municipalidad de la Ciudad de Perico en las oficinas de la
+								intendencia. El acuerdo contó con la presencia de las
+								autoridades correspondientes de cada una de las entidades
+								involucradas.</p>
+							<p class="card-text">
+								<small class="text-body-secondary">Last updated 13 mins
+									ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 col-4">
+					<div class="card h-100">
+						<img src="/images/noticia3.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Campaña de vacunación UNJu 2024</h5>
+							<p class="card-text">El día 29 de mayo del corriente, en el
+								Aula Pelayo Pena de la Escuela de Minas "Dr. Horacio Carrillo"
+								de la UNJu, se realizará una Jornada de Vacunación destinada a
+								Estudiantes, Personal Docentes y No Docente de la Universidad
+								Nacional de Jujuy, en el horario de 09:00 a 15:30 horas.</p>
+							<p class="card-text">
+								<small class="text-body-secondary">Last updated 19 mins
+									ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 col-4">
+					<div class="card h-100">
+						<img src="/images/noticia4.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Reflexiones del 2° Encuentro de la
+								Diplomatura en Formación Integral del Líder y Estrategias de
+								Conducción Consciente</h5>
+							<p class="card-text">El segundo encuentro de la Diplomatura
+								tuvo lugar el viernes pasado en la Facultad de Ingeniería de la
+								UNJu y fue dirigido por el Lic. Roggero Fabián Lino de la
+								Fundación Logosófica de la sede central en la provincia de
+								Buenos Aires y la Esp. Mercadal Irma Noemi (sede Jujuy), con la
+								participación de la Coord. Gral C.P. De Zan Silvia Margarita y
+								el C.P Calizaya Elias Martin. La temática de formación se
+								enmarcó en el desarrollo del liderazgo consciente, dirigido a
+								los estudiantes de las carreras de Ingeniería Industrial, Minas,
+								Informática, Química y Licenciatura en Ciencias Geológicas, como
+								materia optativa o selectiva según la denominación del plan de
+								estudios. Además, estuvo estructurada para interesados externos
+								en cursarla como diplomatura.</p>
+							<p class="card-text">
+								<small class="text-body-secondary">Last updated 23 mins
+									ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 col-4">
+					<div class="card h-100">
+						<img src="/images/noticia5.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Curso de Posgrado "Fisicoquímica"</h5>
+							<p class="card-text">La inscripción al curso se realiza
+								completando el siguiente formulario:
+
+								https://docs.google.com/forms/d/1uRMG2iAZZ_5PqNQyakkRO-Vyt4ux7CZ_U6xm3HvKIhk/edit
+
+								Una vez hecha la inscripción se debe realizar el pago mediante
+								transferencia al siguiente alias: COOPERADORA.FACULTAD (todo con
+								mayúsculas y separadas por un punto). Una vez realizada la
+								transferencia, se deberá completar el siguiente formulario con
+								los datos de facturación y adjuntar el comprobante.
+								https://docs.google.com/forms/d/11rsQNFnS5FeuoWINGDNPiGGX353ZaQqzwxB1IHoaqWs/edit
+
+								La inscripción y el pago se deben realizar antes del inicio del
+								curso, es decir hasta el jueves 6/6/2024 a las 20:00 h.
+								Asimismo, informamos que la facturación puede demorar alrededor
+								de 15 días.</p>
+							<p class="card-text">
+								<small class="text-body-secondary">Last updated 37 mins
+									ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 col-4">
+					<div class="card h-100">
+						<img src="/images/noticia6.png" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">El Comité Organizador del CADI-CAEDI
+								2024 invita a los/as estudiantes a la convocatoria de la
+								propuesta “IngeniaVoz”</h5>
+							<p class="card-text">Se trata de un espacio creado para ellos
+								en el marco del CADI-CAEDI 2024. Es la primera vez que se cuenta
+								con un espacio sólo para estudiantes. La misma propone que
+								los/as estudiantes puedan participar de forma activa mediante
+								una presentación oral breve, estructurada y dinámica sobre temas
+								que pueden ser muy variados, desde tecnología y ciencia hasta
+								arte y cultura, todos ellos que tengan algún vínculo con la
+								ingeniería, de esta forma se busca impactar, inspirar y/o
+								enseñar a la audiencia.</p>
+							<p class="card-text">
+								<small class="text-body-secondary">Last updated 2 hours
+									ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<h2>Carreras de Pregrado y Grado</h2>
+			<div class="row">
+				<div class="col-6">
+					<h3 id="pregrado">Pregrado</h3>
+					<ul>
+						<li>Analista Programador Universitario</li>
+						<li>Técnicatura Universitaria en Diseño Integral de Videojuegos</li>
+						<li>Técnicatura Universitaria en Perforaciones</li>
+					</ul>
+				</div>
+				<div class="col-6">
+					<h3 id="grado">Grado</h3>
+					<ul>
+						<li>Ingeniería Informática</li>
+						<li>Ingeniería Química</li>
+						<li>Ingeniería Industrial</li>
+						<li>Ingeniería de Minas</li>
+						<li>Licenciatura en Ciencias Geológicas</li>
+						<li>Licenciatura en Tecnologia de los Alimentos</li>
+						<li>Licenciatura en Sistemas</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer id="footer"class="bg-primary d-flex justify-content-evenly align-items-center py-5">
+		<div class=" text-align-center">
+			<h3 class="text-white">Datos de Interes</h3>
+			<ul class="text-white">
+				<li>DIRECCION: Ítalo Palanca Nº 10</li>
+				<li>LOCALIDAD: San Salvador de Jujuy. Jujuy - Argentina</li>
+				<li>CONTACTO: info@fi.unju.edu.ar</li>
+				<li>TELÉFONO: 388-422-1576</li>
+				<li>HORARIO: 14:30 a 19:30 hs</li>
+			</ul>
+		</div>
+		<div class="">
+			<img src="/images/logotipo.png"
+				alt="Logotipo de la Facultad de Ingeniería - UNJU" class="img-fluid"
+				style="max-height: 100px;">
+		</div>
+		<div class=" text-align-center">
+			<h3 class="text-white">Redes Sociales</h3>
+			<ul class="text-white">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
 	</footer>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
 </body>
 </html>
