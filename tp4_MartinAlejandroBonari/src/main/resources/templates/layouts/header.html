@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+lang="es">
 <body>
-
+	<header th:fragment="header" class="bg-dark text-white">
+		<div class="container-fluid d-flex justify-content-evenly">
+			<div class="row align-items-center">
+				<div class="col-md-4 text-center text-md-start">
+					<h1>Facultad De Ingenieria - UNJU</h1>
+				</div>
+				<div class="col-md-4 text-center text-md-center">
+					<h2 style="font-style: italic;">"Cada desafío es una
+						oportunidad de aprender y crecer"</h2>
+				</div>
+				<div class="col-md-4 text-center text-md-end">
+					<img src="/images/idea.png"
+						alt="Logotipo de la Facultad de Ingeniería - UNJU"
+						class="img-fluid" style="max-height: 100px;">
+				</div>
+			</div>
+		</div>
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-primary border border-black mt-3">
+			<div class="container d-flex justify-content-evenly">
+				<a class="navbar-brand px-3" href="#inicio">Inicio</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item px-3"><a class="nav-link" href="#footer">Acerca
+								De</a></li>
+						<li class="nav-item px-3"><a class="nav-link" href="#noticias">Noticias</a>
+						</li>
+						<li class="nav-item dropdown px-3"><a
+							class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Carreras </a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#pregrado">Pregrado</a></li>
+								<li><a class="dropdown-item" href="#grado">Grado</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#">Posgrados</a></li>
+								<li><a class="dropdown-item" href="#">Doctorados</a></li>
+								<li><a class="dropdown-item" href="#">Maestrias</a></li>
+							</ul></li>
+						<li class="nav-item"><a class="nav-link" href="https://www.fi.unju.edu.ar/servicios/telefonos.html">Contactos</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 </body>
 </html>
