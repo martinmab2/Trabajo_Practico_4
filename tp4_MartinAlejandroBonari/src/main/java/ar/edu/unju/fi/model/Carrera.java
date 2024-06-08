@@ -1,23 +1,23 @@
 package ar.edu.unju.fi.model;
 
 public class Carrera {
-    private int codigo;
+    private String codigo;
     private String nombre;
     private int cantidadAnios;
     private String estado;
 
-    public Carrera(int codigo, String nombre, int cantidadAnios, String estado) {
+    public Carrera(String codigo, String nombre, int cantidadAnios, String estado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.cantidadAnios = cantidadAnios;
         this.estado = estado;
     }
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 

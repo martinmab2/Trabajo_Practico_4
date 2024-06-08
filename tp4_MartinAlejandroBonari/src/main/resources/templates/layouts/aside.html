@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
 <body>
 	<aside th:fragment="aside">
 		<nav class="nav flex-column bg-dark p-2 text-center rounded">
@@ -18,7 +19,7 @@ lang="es">
 			</div>
 			<div>
 				<img>
-				<a class="nav-link text-white my-2" href="https://www.fi.unju.edu.ar/component/search/?searchword=laboratori&searchphrase=all&Itemid=288">Laboratorios</a>
+				<a class="nav-link text-white my-2 pb-4" href="https://www.fi.unju.edu.ar/component/search/?searchword=laboratori&searchphrase=all&Itemid=288">Laboratorios</a>
 			</div>			
 		</nav>
 	</aside>

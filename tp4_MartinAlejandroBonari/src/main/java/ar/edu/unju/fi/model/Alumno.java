@@ -2,6 +2,7 @@ package ar.edu.unju.fi.model;
 
 import java.time.LocalDate;
 
+
 public class Alumno {
     private int dni;
     private String nombre;
@@ -83,8 +84,8 @@ public class Alumno {
 		return LU;
 	}
 
-	public void setLU(String lU) {
-		LU = lU;
+	public void setLU(String LU) {
+		this.LU = LU;
 	}
 
     

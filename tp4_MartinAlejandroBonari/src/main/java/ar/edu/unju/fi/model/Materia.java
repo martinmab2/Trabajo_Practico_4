@@ -71,10 +71,8 @@ public class Materia {
 	public Carrera getCarreara() {
 		return carreara;
 	}
-
+	
 	public void setCarreara(Carrera carreara) {
 		this.carreara = carreara;
-	}
-	
-	
+	}	
 }

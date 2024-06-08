@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+		<div class="container-fluid d-flex row p-5">	
+			<div class="card" data-th-each="carrera: ${carreras}" style="width: 18rem;">
+				<div class="card-body">
+				    <h5 class="card-title mb-2 " data-th-text="${carrera.nombre}"></h5>
+				    <h5 class="card-title" data-th-text="${carrera.codigo}"></h5>
+				    <p class="card-title" data-th-text="${carrera.cantidadAnios}+ ' años'"></p>
+				    <p class="card-title" data-th-text="'Estado: '+${carrera.estado}"></p>
+				</div>
+			</div>
+		</div>
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+</body>
+</html>
