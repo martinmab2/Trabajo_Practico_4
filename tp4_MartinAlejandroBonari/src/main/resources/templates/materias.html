@@ -7,7 +7,7 @@
 			<h2 class="text-center m-5">Listado De Materias</h2>
 		</div>
 		<div class="container card align-items-center col-9 my-5 mb-5">
-			<a href="#" class="card-button btn btn-success mt-4">Añadir nueva materia</a>
+			<a data-th-href="@{/materia/nuevo}" class="card-button btn btn-success mt-4">Añadir nueva materia</a>
 			<div class="container d-flex row card-body justify-content-between">
         		<div class="card bg-gradient-success-danger m-2" data-th-each="materia: ${materias}" style="width: 19rem;">
             		<div class="card-body text-white mb-2">
@@ -21,7 +21,7 @@
                 			Carrera: <strong><span data-th-text="${materia.carrera.nombre}"></span></strong>
             			</p>
                 		
-                		<a href="#" class="card-button btn btn-danger">Eliminar</a> <a href="#" class="card-button btn btn-secondary">Editar</a>
+                		<a class="card-button btn btn-danger">Eliminar</a> <a href="#" class="card-button btn btn-secondary">Editar</a>
             		</div>
         		</div>
     		</div>

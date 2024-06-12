@@ -1,8 +1,11 @@
 package ar.edu.unju.fi.collections;
 import java.util.ArrayList;
 import java.util.List;
-import ar.edu.unju.fi.model.Docente;
 
+import org.springframework.stereotype.Component;
+
+import ar.edu.unju.fi.model.Docente;
+@Component
 public class DocenteCollection {
 	private static List<Docente> docentes = new ArrayList<Docente>();
 
