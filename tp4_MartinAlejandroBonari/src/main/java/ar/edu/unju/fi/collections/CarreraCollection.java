@@ -25,4 +25,13 @@ public class CarreraCollection {
 		}
 	return carreras;
 	}
+	
+	public static Carrera BuscarCarreraPorCodigo(String codigo) {
+		for (Carrera carrera : carreras) {
+			if(carrera.getCodigo().equals(codigo)) {
+				return carrera;
+			}
+		}
+		return null;
+	}
 }

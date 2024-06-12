@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>	
+		<div class="text-center">
+			<h2 class="text-center m-5">Listado De Docentes</h2>
+		</div>
+		<div class="container-fluid card col-10 pb-5 text-center">
+		<div>
+			<a href="#" class="card-button btn btn-primary mt-3 col-4">Añadir Nuevo Docente</a>
+		</div>
+        	<div class="row">
+            	<div class="col-3 p-3" data-th-each="docente: ${docentes}">
+                	<ul class="list-group">
+                    	<li class="list-group-item bg-dark text-white text-center" aria-current="true" data-th-text="${docente.legajo} +':      ' + ${docente.nombre} + '  ' + ${docente.apellido}"></li>
+                    	<li class="list-group-item " data-th-text="${docente.email}"></li>
+                    	<li class="list-group-item " data-th-text="${docente.telefono}"></li>
+                    	<li class="list-group-item text-center"><button type="button" class="btn btn-secondary">Modificar</button><button type="button" class="btn btn-danger">Eliminar</button></li>
+                	</ul>
+            	</div>
+        	</div>
+    	</div>
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+</body>
+</html>

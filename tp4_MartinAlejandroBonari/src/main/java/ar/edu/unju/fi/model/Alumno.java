@@ -8,12 +8,12 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private String email;
-    private long telefono;
+    private String telefono;
     private LocalDate fechaNacimiento;
     private String domicilio;
     private String LU;
 
-    public Alumno(int dni, String nombre, String apellido, String email, long telefono, LocalDate fechaNacimiento, String domicilio, String LU) {
+    public Alumno(int dni, String nombre, String apellido, String email, String telefono, LocalDate fechaNacimiento, String domicilio, String LU) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -56,11 +56,11 @@ public class Alumno {
 		this.email = email;
 	}
 
-	public long getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(long telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 

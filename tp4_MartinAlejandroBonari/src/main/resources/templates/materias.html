@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+	<div class="text-center">
+			<h2 class="text-center m-5">Listado De Materias</h2>
+		</div>
+		<div class="container card align-items-center col-9 my-5 mb-5">
+			<a href="#" class="card-button btn btn-success mt-4">Añadir nueva materia</a>
+			<div class="container d-flex row card-body justify-content-between">
+        		<div class="card bg-gradient-success-danger m-3" data-th-each="materia: ${materias}" style="width: 18rem;">
+            		<div class="card-body text-white mb-2">
+                		<h5 class="card-title text-end" data-th-text="${materia.codigo}"></h5>
+                		<h5 class="card-title text-center" data-th-text="${materia.nombre}"></h5>
+                		<p class="card-title" data-th-text="${materia.curso}"></p>
+                		<p class="card-title" data-th-text="'Carga Horaria: '+${materia.cantidadHoras}+' Horas'"></p>
+                		<p class="card-text">
+                			Modalidad: <span data-th-text="${materia.modalidad}"></span><br>
+                			Docente: <span data-th-text="${materia.docente.nombre} + ' ' + ${materia.docente.apellido}"></span><br>
+                			Carrera: <span data-th-text="${materia.carrera.nombre}"></span>
+            			</p>
+                		
+                		<a href="#" class="card-button btn btn-danger">Eliminar</a> <a href="#" class="card-button btn btn-secondary">Editar</a>
+            		</div>
+        		</div>
+    		</div>
+		</div>
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+</body>
+</html>

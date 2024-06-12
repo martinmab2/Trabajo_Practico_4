@@ -9,6 +9,11 @@ lang="es">
 		rel="stylesheet"
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 		crossorigin="anonymous">
+	<style>
+    .bg-gradient-success-danger {
+         background: linear-gradient(45deg, #0d6efd, #212529);
+    }
+    </style>
 </head>
 <body>
 	<header th:fragment="header" class="bg-dark text-white">
@@ -46,11 +51,11 @@ lang="es">
 						</li>
 						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/carrera}">Carreras</a>
 						</li>
-						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/carrera}">Alumnos</a>
+						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/alumno}">Alumnos</a>
 						</li>
-						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/carrera}">Docentes</a>
+						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/docente}">Docentes</a>
 						</li>
-						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/carrera}">Materias</a>
+						<li class="nav-item px-3"><a class="nav-link" data-th-href="@{/materia}">Materias</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="https://www.fi.unju.edu.ar/servicios/telefonos.html">Contactos</a>
 						</li>

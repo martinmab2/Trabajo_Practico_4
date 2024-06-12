@@ -5,19 +5,19 @@ public class Materia {
 	private String nombre;
 	private String curso;
 	private int cantidadHoras;
-	private boolean modalidad;
+	private Modalidad modalidad;
 	private Docente docente;
-	private Carrera carreara;
+	private Carrera carrera;
 	
-	public Materia(int codigo, String nombre, String curso, int cantidadHoras, boolean modalidad, Docente docente,
-			Carrera carreara) {
+	public Materia(int codigo, String nombre, String curso, int cantidadHoras, Modalidad modalidad, Docente docente,
+			Carrera carrera) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.curso = curso;
 		this.cantidadHoras = cantidadHoras;
 		this.modalidad = modalidad;
 		this.docente = docente;
-		this.carreara = carreara;
+		this.carrera = carrera;
 	}
 
 	public int getCodigo() {
@@ -52,11 +52,11 @@ public class Materia {
 		this.cantidadHoras = cantidadHoras;
 	}
 
-	public boolean isModalidad() {
+	public Modalidad getModalidad() {
 		return modalidad;
 	}
 
-	public void setModalidad(boolean modalidad) {
+	public void setModalidad(Modalidad modalidad) {
 		this.modalidad = modalidad;
 	}
 
@@ -68,11 +68,11 @@ public class Materia {
 		this.docente = docente;
 	}
 
-	public Carrera getCarreara() {
-		return carreara;
+	public Carrera getCarrera() {
+		return carrera;
 	}
 	
-	public void setCarreara(Carrera carreara) {
-		this.carreara = carreara;
+	public void setCarrera(Carrera carrera) {
+		this.carrera = carrera;
 	}	
 }
