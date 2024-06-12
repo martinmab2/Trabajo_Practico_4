@@ -50,6 +50,7 @@ public class CarreraCollection {
 			carreraExistente.setEstado(carreraModificada.getEstado());
 		}
 	}
+	
 	public static void eliminarCarrera(String codigo) {
 		Carrera carrera = buscarCarreraConCodigo(codigo);
 		if (carrera != null) {

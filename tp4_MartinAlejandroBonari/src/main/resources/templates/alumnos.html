@@ -4,7 +4,7 @@
 <body>
 	<header data-th-replace="~{/layouts/header :: header}"></header>
 	<h2 class="text-center m-4">Listado de Alumnos</h2>
-	<div><a data-th-href="@{/carrera/nuevo}" class="card-button btn btn-success mt-4" role="button">Añadir nueva carrera</a></div>
+	<div class="text-center"><a data-th-href="@{/alumno/nuevo}" class="card-button btn btn-success mt-4" role="button">Agregar alumno</a></div>
 	<table class="table container mt-5 ">
 		<thead>
 			<tr>
@@ -26,7 +26,7 @@
 				<td data-th-text="${alumno.telefono}"></td>
 				<td data-th-text="${alumno.fechaNacimiento}"></td>
 				<td data-th-text="${alumno.domicilio}"></td>
-				<td><a class="card-button btn btn-danger"  role="button">Eliminar</a><a class="card-button btn btn-secondary">Editar</a></td>
+				<td><a class="card-button btn btn-danger"  role="button" data-th-href="@{/alumno/eliminar/{LU}(LU=${alumno.LU})}">Eliminar</a><a class="card-button btn btn-secondary" data-th-href="@{/alumno/modificar/{LU}(LU=${alumno.LU})}">Editar</a></td>
 			</tr>
 		</tbody>
 	</table>
