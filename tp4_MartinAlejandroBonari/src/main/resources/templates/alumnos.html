@@ -4,7 +4,8 @@
 <body>
 	<header data-th-replace="~{/layouts/header :: header}"></header>
 	<h2 class="text-center m-4">Listado de Alumnos</h2>
-	<table class="table container mt-5 bg-dark">
+	<div><a data-th-href="@{/carrera/nuevo}" class="card-button btn btn-success mt-4" role="button">Añadir nueva carrera</a></div>
+	<table class="table container mt-5 ">
 		<thead>
 			<tr>
 				<th scope="col">LU</th>
@@ -25,25 +26,10 @@
 				<td data-th-text="${alumno.telefono}"></td>
 				<td data-th-text="${alumno.fechaNacimiento}"></td>
 				<td data-th-text="${alumno.domicilio}"></td>
+				<td><a class="card-button btn btn-danger"  role="button">Eliminar</a><a class="card-button btn btn-secondary">Editar</a></td>
 			</tr>
 		</tbody>
 	</table>
-
-	<div class="container-fluid d-flex row p-5">
-		<div class="card m-3 bg-primary" data-th-each="alumno: ${alumnos}"
-			style="width: 18rem;">
-			<div class="card-body text-white">
-				<h5 class="card-title mb-2 " data-th-text="${alumno.dni}"></h5>
-				<h5 class="card-title" data-th-text="${alumno.nombre}"></h5>
-				<p class="card-title" data-th-text="${alumno.apellido}"></p>
-				<p class="card-title" data-th-text="${alumno.email}"></p>
-				<p class="card-title" data-th-text="${alumno.telefono}"></p>
-				<p class="card-title" data-th-text="${alumno.fechaNacimiento}"></p>
-				<p class="card-title" data-th-text="${alumno.domicilio}"></p>
-				<p class="card-title" data-th-text="${alumno.LU}"></p>
-			</div>
-		</div>
-	</div>
 	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 </body>
 </html>

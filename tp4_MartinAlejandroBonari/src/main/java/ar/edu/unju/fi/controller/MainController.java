@@ -24,4 +24,8 @@ public class MainController {
 	public String getMateriasPage() {
 		return"redirect:/materia/listado";
 	}
+	@GetMapping("/nuevo")
+	public String getAddCarreraPage() {
+		return"carrera";
+	}
 }
