@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+	<div class="card col-9 container my-5">
+		<form class="row g-3 m-3"
+			th:action="${edicion} ? @{/docente/modificar} : @{/docente/guardar}"
+			th:object="${docente}" method="post">
+			<div>
+				<h2 th:text="${edicion} ? 'Modificar Docente' : 'Nuevo Docente'"
+					class="text-center"></h2>
+			</div>
+			<div class="col-md-6">
+				<label for="legajo" class="form-label">Legajo</label> <input type="text" class="form-control" id="legajo"
+					th:field="*{legajo}" th:readonly="${edicion}" required>
+				<div class="valid-feedback">Looks good!</div>
+			</div>
+			<div class="col-md-6">
+				<label for="nombre" class="form-label">Nombre</label> <input
+					type="text" class="form-control" id="nombre" th:field="*{nombre}"
+					required>
+				<div class="valid-feedback">Looks good!</div>
+			</div>
+			<div class="col-md-6">
+				<label for="apellido" class="form-label">Apellido</label> <input
+					type="text" class="form-control" id="apellido"
+					th:field="*{apellido}" required>
+				<div class="valid-feedback">Looks good!</div>
+			</div>
+			<div class="col-md-6">
+				<label for="email" class="form-label">Email</label>
+				<div class="input-group has-validation">
+					<input type="email" class="form-control" id="email"
+						th:field="*{email}" required>
+					<div class="invalid-feedback">Please choose a duration.</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label for="telefono" class="form-label">Teléfono</label>
+				<div class="input-group has-validation">
+					<input type="tel" class="form-control" id="telefono"
+						th:field="*{telefono}" value="+54 9">
+					<div class="invalid-feedback">Por favor, ingrese un número de
+						teléfono válido.</div>
+				</div>
+			</div>
+			<div class="col-12 m-3">
+				<button class="btn btn-primary" type="submit">Confirmar</button>
+			</div>
+		</form>
+	</div>
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+</body>
+</html>
