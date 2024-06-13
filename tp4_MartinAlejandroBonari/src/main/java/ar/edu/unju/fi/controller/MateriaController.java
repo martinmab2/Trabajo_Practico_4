@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.collections.CarreraCollection;
 import ar.edu.unju.fi.collections.DocenteCollection;
 import ar.edu.unju.fi.collections.MateriaCollection;
@@ -22,16 +21,11 @@ public class MateriaController {
 	
 	@Autowired
 	private MateriaCollection materiaCollection;
-
-	@Autowired
-	private DocenteCollection docenteCollection;
-
-	@Autowired
-	private CarreraCollection carreraCollection;
 	
 	@GetMapping("/listado")
 	public String getListaMateriasPage(Model model) {
 		model.addAttribute("materias", materiaCollection.getMaterias());
+		model.addAttribute("titulo", "Materias");
 		return "materias";
 	}
 
@@ -41,19 +35,33 @@ public class MateriaController {
 		model.addAttribute("edicion", false);
 		model.addAttribute("docentes", DocenteCollection.getDocentes());
         model.addAttribute("carreras", CarreraCollection.getCarreras());
+        model.addAttribute("titulo", "Nueva Materia");
 		return "materia";
 	}
 
 	@PostMapping("/guardar")
 	public String guardarMateria(@ModelAttribute("materia") Materia materia, Model model) {
-		Docente docenteSeleccionado = DocenteCollection.buscarDocentePorLegajo(materia.getDocente().getLegajo());
+	    Docente docenteSeleccionado = DocenteCollection.buscarDocentePorLegajo(materia.getDocente().getLegajo());
+	    Carrera carreraSeleccionada = CarreraCollection.buscarCarreraConCodigo(materia.getCarrera().getCodigo()); // Busca por código
 
-		Carrera carreraSeleccionada = CarreraCollection.buscarCarreraConCodigo(materia.getCarrera().getNombre()); // Busca por nombre
+	    if (docenteSeleccionado != null && carreraSeleccionada != null) {
 	        materia.setDocente(docenteSeleccionado);
-	        materia.setCarrera(carreraSeleccionada); // Asigna la carrera encontrada
+	        materia.setCarrera(carreraSeleccionada);
 	        materiaCollection.guardarMateria(materia);
 	        return "redirect:/materia/listado";
+	    } else {
+	        if (docenteSeleccionado == null) {
+	            model.addAttribute("errorDocente", "No se encontró el docente seleccionado.");
+	        }
+	        if (carreraSeleccionada == null) {
+	            model.addAttribute("errorCarrera", "No se encontró la carrera seleccionada.");
+	        }
+	        model.addAttribute("docentes", DocenteCollection.getDocentes());
+	        model.addAttribute("carreras", CarreraCollection.getCarreras());
+	        return "redirect:/materia/listado";
+	    }
 	}
+
 
 	@GetMapping("/modificar/{codigo}")
 	public String getModificarMateriaPage(Model model, @PathVariable("codigo") int codigo) {
@@ -61,6 +69,8 @@ public class MateriaController {
 		model.addAttribute("materia", materia);
 		model.addAttribute("edicion", true);
 		model.addAttribute("docentes", DocenteCollection.getDocentes());
+		model.addAttribute("carreras", CarreraCollection.getCarreras());
+		model.addAttribute("titulo", "Modificar Materia");
 		return "materia";
 	}
 
@@ -68,15 +78,23 @@ public class MateriaController {
 	public String modificarMateria(@ModelAttribute("materia") Materia materia, Model model) {
 		materiaCollection.modificarMateria(materia);
 		Docente docenteSeleccionado = DocenteCollection.buscarDocentePorLegajo(materia.getDocente().getLegajo());
-
-		if (docenteSeleccionado != null) {
+		Carrera carreraSeleccionada = CarreraCollection.buscarCarreraConCodigo(materia.getCarrera().getCodigo());
+		
+		if (docenteSeleccionado != null && carreraSeleccionada != null) {
 			materia.setDocente(docenteSeleccionado);
+			materia.setCarrera(carreraSeleccionada);
 			materiaCollection.modificarMateria(materia);
 			return "redirect:/materia/listado";
 		} else {
-			model.addAttribute("errorDocente", "No se encontró el docente seleccionado.");
-			model.addAttribute("docentes", DocenteCollection.getDocentes());
-			return "materia";
+			if (docenteSeleccionado == null) {
+	            model.addAttribute("errorDocente", "No se encontró el docente seleccionado.");
+	        }
+	        if (carreraSeleccionada == null) {
+	            model.addAttribute("errorCarrera", "No se encontró la carrera seleccionada.");
+	        }
+	        model.addAttribute("docentes", DocenteCollection.getDocentes());
+	        model.addAttribute("carreras", CarreraCollection.getCarreras());
+	        return "materia";
 		}
 	}
 

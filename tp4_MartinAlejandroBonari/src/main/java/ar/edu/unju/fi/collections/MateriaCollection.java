@@ -20,14 +20,14 @@ public class MateriaCollection {
 		List<Docente> docentes = DocenteCollection.getDocentes();
 		List<Carrera> carreras = CarreraCollection.getCarreras(); 
 
-		materias.add(new Materia(101, "Botánica", "1°Año", 60, Modalidad.BIMODAL, docentes.get(0), carreras.get(0)));
+		materias.add(new Materia(101, "Laboratorio de Programacion Orientado a Objetos II", "3°Año", 60, Modalidad.BIMODAL, docentes.get(0), carreras.get(0)));
 		materias.add(
 				new Materia(102, "Base de Datos I", "1°Año", 35, Modalidad.BIMODAL, docentes.get(2), carreras.get(1)));
 		materias.add(new Materia(103, "Programacion Estructurada", "1°Año", 55, Modalidad.VIRTUAL, docentes.get(1),
 				carreras.get(2)));
 		materias.add(
-				new Materia(106, "Algebra II", "1°Año", 40, Modalidad.PRESENCIAL, docentes.get(3), carreras.get(3)));
-		materias.add(new Materia(105, "Redes I", "1°Año", 45, Modalidad.PRESENCIAL, docentes.get(3), carreras.get(4)));
+				new Materia(106, "Algebra II", "2°Año", 40, Modalidad.PRESENCIAL, docentes.get(3), carreras.get(3)));
+		materias.add(new Materia(105, "Redes I", "3°Año", 45, Modalidad.PRESENCIAL, docentes.get(3), carreras.get(4)));
 		materias.add(new Materia(207, "Programacion Visual", "2°Año", 50, Modalidad.VIRTUAL, docentes.get(2),
 				carreras.get(5)));
 		materias.add(new Materia(301, "Programacion y Servicios Web", "3°Año", 65, Modalidad.BIMODAL, docentes.get(1),
@@ -72,6 +72,7 @@ public class MateriaCollection {
 			materiaExistente.setCurso(materiaModificada.getCurso());
 			materiaExistente.setCantidadHoras(materiaModificada.getCantidadHoras());
 			materiaExistente.setModalidad(materiaModificada.getModalidad());
+			materiaExistente.setCarrera(materiaModificada.getCarrera());
 		}
 	}
 

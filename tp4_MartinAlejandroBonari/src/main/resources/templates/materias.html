@@ -13,15 +13,15 @@
             		<div class="card-body text-white mb-2">
                 		<h5 class="card-title text-end" data-th-text="${materia.codigo}"></h5>
                 		<h5 class="card-title text-center" data-th-text="${materia.nombre}"></h5>
-                		<p class="card-title" data-th-text="${materia.curso}"></p>
-                		<p class="card-title" data-th-text="'Carga Horaria: '+${materia.cantidadHoras}+' Horas'"></p>
+                		<p class="card-title" data-th-text="${materia.curso}+'° Año'"></p>
+                		<p class="card-title" data-th-text="'Carga Horaria Semanal: '+${materia.cantidadHoras}+' Horas'"></p>
                 		<p class="card-text">
                 			Modalidad: <span data-th-text="${materia.modalidad}"></span><br>
                 			Docente a cargo: <br><strong><span data-th-text="${materia.docente.nombre} + ' ' + ${materia.docente.apellido}"></span></strong><br>
                 			Carrera: <strong><span data-th-text="${materia.carrera.nombre}"></span></strong>
             			</p>
                 		
-                		<a class="card-button btn btn-danger">Eliminar</a> <a href="#" class="card-button btn btn-secondary">Editar</a>
+                		<a class="card-button btn btn-danger" data-th-href="@{/materia/eliminar/{codigo}(codigo=${materia.codigo})}">Eliminar</a> <a data-th-href="@{/materia/modificar/{codigo}(codigo=${materia.codigo})}" class="card-button btn btn-secondary">Editar</a>
             		</div>
         		</div>
     		</div>
