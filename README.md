@@ -1,4 +1,4 @@
-# Trabajo Práctico Nº4 - Programación Visual - Martin Alejandro Bonari
+# Trabajo Práctico Nº5 - Programación Visual - GRUPO K
 
 Este repositorio contiene el Trabajo Práctico Nº4 desarrollado para la materia de Programación Visual, utilizando el patrón Modelo-Vista-Controlador (MVC). El proyecto incluye clases de modelo en `ar.edu.unju.fi.modelo`, controladores en `ar.edu.unju.fi.controller`, y colecciones en `ar.edu.unju.fi.collection`. Además, los archivos HTML están ubicados en la carpeta `templates`, con componentes comunes como el encabezado (`header.html`) y pie de página (`footer.html`) en la carpeta `layouts` dentro de `templates`.
 
