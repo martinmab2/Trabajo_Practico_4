@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head data-th-replace="~{/layouts/header :: head}"></head>
+
+<head data-th-replace="~{/layouts/header :: head}">
+</head>
+
 <body>
 	<header data-th-replace="~{/layouts/header :: header}"></header>
-		<div class="text-center">
-			<h2 class="text-center m-5">Listado De Carreras</h2>
+	<main>
+		<div class="container my-5 col-xl-8 col-xxl-8">
+			<div class="card">
+				<div class="card-body p-xl-5">
+					<div class="text-center mt-5">
+						<i class="fa-solid fa-graduation-cap fa-2xl" style="color: #007bff;"></i>
+					</div>
+					<h2 class="text-center display-6 mb-4">Listado De Carreras</h2>
+					<div class="text-center mb-4">
+						<a data-th-href="@{/carrera/nuevo}" class="btn btn-primary mt-4" role="button">
+							<i class="fas fa-plus"></i> Añadir nueva carrera
+						</a>
+					</div>
+					<div class="row row-cols-1 row-cols-md-2 g-4 mt-5">
+						<div th:each="carrera : ${carreras}" class="col">
+							<div class="card h-100 bg-primary text-white border-white">
+								<div class="text-end mt-4 mb-1 pe-3">
+									<i class="fa-solid fa-graduation-cap fa-2xl" style="color: #ffff;"></i>
+								</div>
+								<div class="card-body">
+									<h5 class="card-title text-end" th:text="${carrera.codigo}"></h5>
+									<h5 class="card-title display-6" th:text="${carrera.nombre}"></h5>
+									<p class="card-title" th:text="'Duración: ' + ${carrera.cantidadAnios} + ' años'">
+									</p>
+									<p class="card-title" th:text="'Estado: ' + ${carrera.estado}"></p>
+									<div class="d-flex justify-content-center mt-3">
+										<a th:href="@{/carrera/eliminar/{codigo}(codigo=${carrera.codigo})}"
+											class="btn btn-sm btn-danger me-2">
+											<i class="fas fa-trash"></i> Eliminar
+										</a>
+										<a th:href="@{/carrera/modificar/{codigo}(codigo=${carrera.codigo})}"
+											class="btn btn-sm btn-secondary">
+											<i class="fas fa-edit"></i> Editar
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h2 class="text-center display-6 mt-5 mb-4">Nueva Carrera</h2>
+					<div class="text-center">
+						<a th:href="@{/carrera/nuevo}" class="btn btn-primary">
+							<i class="fas fa-plus"></i> Agregar Nueva Carrera
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="container card align-items-center col-9 my-5 mb-5">
-			<a data-th-href="@{/carrera/nuevo}" class="card-button btn btn-success mt-4" role="button">Añadir nueva carrera</a>
-			<div class="container d-flex row card-body justify-content-between">
-        		<div class="card bg-gradient-success-danger m-3" data-th-each="carrera: ${carreras}" style="width: 18rem;">
-            		<div class="card-body text-white mb-2">
-                		<h5 class="card-title text-end" data-th-text="${carrera.codigo}"></h5>
-                		<h5 class="card-title text-center" data-th-text="${carrera.nombre}"></h5>
-                		<p class="card-title" data-th-text="'Duración: ' +${carrera.cantidadAnios}+ ' años'"></p>
-                		<p class="card-title" data-th-text="'Estado: '+${carrera.estado}"></p>
-                		<a class="card-button btn btn-danger" data-th-href="@{/carrera/eliminar/{codigo}(codigo=${carrera.codigo})}" role="button">Eliminar</a> <a data-th-href="@{/carrera/modificar/{codigo}(codigo=${carrera.codigo})}" class="card-button btn btn-secondary">Editar</a>
-            		</div>
-        		</div>
-    		</div>
-		</div>
+	</main>
 	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 </body>
+
 </html>
