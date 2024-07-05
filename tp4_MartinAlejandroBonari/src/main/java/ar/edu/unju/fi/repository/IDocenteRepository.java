@@ -1,5 +1,9 @@
 package ar.edu.unju.fi.repository;
 
-public interface IDocenteRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import ar.edu.unju.fi.model.Docente;
+
+public interface IDocenteRepository extends CrudRepository<Docente, String> {
 
 }
