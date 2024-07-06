@@ -1,8 +1,8 @@
 package ar.edu.unju.fi.dto;
 
+import ar.edu.unju.fi.enumerados.Modalidad;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Docente;
-import ar.edu.unju.fi.model.Modalidad;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

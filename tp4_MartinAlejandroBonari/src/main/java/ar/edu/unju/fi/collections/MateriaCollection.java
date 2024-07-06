@@ -3,9 +3,10 @@ package ar.edu.unju.fi.collections;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
+
+import ar.edu.unju.fi.enumerados.Modalidad;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Materia;
-import ar.edu.unju.fi.model.Modalidad;
 import ar.edu.unju.fi.model.Docente;
 
 @Component
