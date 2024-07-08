@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Component
 @Entity
 @Data
@@ -19,13 +18,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Carrera {
 	@Id
-    @Column(name="carrera_codigo")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String codigo;
-	@Column(name="carrera_nombre")
-    private String nombre;
-	@Column(name="carrera_duracion")
-    private int cantidadAnios;
-	@Column(name="carrera_estado")
-    private String estado;
+	@Column(name = "carrera_codigo")
+	private Long codigo;
+
+	@Column(name = "carrera_nombre")
+	private String nombre;
+
+	@Column(name = "carrera_duracion")
+	private int cantidadAnios;
+
+	@Column(name = "carrera_estado")
+	private String estado;
 }
