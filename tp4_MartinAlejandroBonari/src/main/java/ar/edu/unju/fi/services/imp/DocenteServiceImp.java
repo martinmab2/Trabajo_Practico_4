@@ -14,21 +14,19 @@ public class DocenteServiceImp implements IDocenteService {
 	
 	@Autowired
 	private IDocenteRepository docenteRepository;
-	@Autowired
-	private Docente docente;
 	
 	@Override
 	public void añadirDocente(Docente docente) {
 		docenteRepository.save(docente);
 	}
+	
 	@Override
 	public List<Docente> getAllDocentes(){
-		List<Docente> docentes = (List<Docente>) docenteRepository.findAll();
-		return docentes;
+		return (List<Docente>) docenteRepository.findAll();
 	}
+	
 	@Override
-	public Docente buscarDocenteConLegajo(String legajo) {
-		docente = docenteRepository.findById(legajo).get();
-		return docente;
+	public Docente buscarDocenteConLegajo(Integer legajo) {
+		return docenteRepository.findByLegajo(legajo);
 	}
 }
