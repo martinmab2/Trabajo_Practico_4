@@ -23,7 +23,7 @@ public class AlumnoController {
     public String getListaAlumnosPage(Model model) {
         model.addAttribute("alumnos", alumnoRepository.findAll());
         model.addAttribute("titulo", "Alumnos");
-        return "alumnos";
+        return "/eAlumno/alumnos";
     }
 
     @GetMapping("/nuevo")
@@ -31,7 +31,7 @@ public class AlumnoController {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("edicion", false);
         model.addAttribute("titulo", "Nuevo Alumno");
-        return "alumno";
+        return "/eAlumno/alumno";
     }
 
     @PostMapping("/guardar")
@@ -46,7 +46,7 @@ public class AlumnoController {
         model.addAttribute("alumno", alumno);
         model.addAttribute("edicion", true);
         model.addAttribute("titulo", "Modificar Alumno");
-        return "alumno";
+        return "/eAlumno/alumno";
     }
 
     @PostMapping("/modificar")

@@ -23,7 +23,7 @@ public class DocenteController {
     public String getListaDocentesPage(Model model) {
         model.addAttribute("docentes", docenteRepository.findAll());
         model.addAttribute("titulo", "Docentes");
-        return "docentes";
+        return "/eDocente/docentes";
     }
 
     @GetMapping("/nuevo")
@@ -31,7 +31,7 @@ public class DocenteController {
         model.addAttribute("docente", new Docente());
         model.addAttribute("edicion", false);
         model.addAttribute("titulo", "Nuevo Docente");
-        return "docente";
+        return "/eDocente/docente";
     }
 
     @PostMapping("/guardar")
@@ -46,7 +46,7 @@ public class DocenteController {
         model.addAttribute("docente", docente);
         model.addAttribute("edicion", true);
         model.addAttribute("titulo", "Modificar Docente");
-        return "docente";
+        return "/eDocente/docente";
     }
 
     @PostMapping("/modificar")

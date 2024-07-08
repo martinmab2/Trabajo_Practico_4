@@ -23,7 +23,7 @@ public class CarreraController {
 	public String getListaCarrerasPage(Model model) {
 		model.addAttribute("carreras", carreraRepository.findAll());
 		model.addAttribute("titulo", "Carreras");
-		return "carreras";
+		return "/eCarrera/carreras";
 	}
 
 	@GetMapping("/nuevo")
@@ -31,7 +31,7 @@ public class CarreraController {
 		model.addAttribute("carrera", new Carrera());
 		model.addAttribute("edicion", false);
 		model.addAttribute("titulo", "Nueva Carrera");
-		return "carrera";
+		return "/eCarrera/carrera";
 	}
 
 	@PostMapping("/guardar")
@@ -46,7 +46,7 @@ public class CarreraController {
 		model.addAttribute("carrera", carrera);
 		model.addAttribute("edicion", true);
 		model.addAttribute("titulo", "Modificar Carrera");
-		return "carrera";
+		return "/eCarrera/carrera";
 	}
 
 	@PostMapping("/modificar")

@@ -34,7 +34,7 @@ public class MateriaController {
     public String getListaMateriasPage(Model model) {
         model.addAttribute("materias", materiaRepository.findAll());
         model.addAttribute("titulo", "Materias");
-        return "materias";
+        return "/eMateria/materias";
     }
 
     @GetMapping("/nuevo")
@@ -45,7 +45,7 @@ public class MateriaController {
         model.addAttribute("carreras", carreraRepository.findAll());
         model.addAttribute("modalidad", Modalidad.values());
         model.addAttribute("titulo", "Nueva Materia");
-        return "materia";
+        return "/eMateria/materia";
     }
 
     @PostMapping("/guardar")
@@ -67,7 +67,7 @@ public class MateriaController {
             }
             model.addAttribute("docentes", docenteRepository.findAll());
             model.addAttribute("carreras", carreraRepository.findAll());
-            return "materia";
+            return "/eMateria/materia";
         }
     }
 
@@ -80,7 +80,7 @@ public class MateriaController {
         model.addAttribute("carreras", carreraRepository.findAll());
         model.addAttribute("modalidad", Modalidad.values());
         model.addAttribute("titulo", "Modificar Materia");
-        return "materia";
+        return "/eMateria/materia";
     }
 
     @PostMapping("/modificar")
@@ -102,7 +102,7 @@ public class MateriaController {
             }
             model.addAttribute("docentes", docenteRepository.findAll());
             model.addAttribute("carreras", carreraRepository.findAll());
-            return "materia";
+            return "/eMateria/materia";
         }
     }
 
