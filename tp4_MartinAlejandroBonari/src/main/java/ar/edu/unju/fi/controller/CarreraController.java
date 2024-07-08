@@ -60,4 +60,9 @@ public class CarreraController {
 		carreraRepository.deleteById(codigo);
 		return "redirect:/carrera/listado";
 	}
+	 @GetMapping("/consultar")
+	    public String getConsultarAlumnoPage(Model model) {
+	        model.addAttribute("titulo", "Consultar Alumnos Inscriptos");
+	        return "consulta/consultarAlumno";
+	    }
 }

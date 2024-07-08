@@ -60,4 +60,10 @@ public class AlumnoController {
         alumnoRepository.deleteById(dni);
         return "redirect:/alumno/listado";
     }
+
+    @GetMapping("/filtrar")
+    public String getFiltrarAlumnoPage(Model model) {
+        model.addAttribute("titulo", "Filtrar Alumno");
+        return "consulta/filtrarAlumno";
+    }
 }

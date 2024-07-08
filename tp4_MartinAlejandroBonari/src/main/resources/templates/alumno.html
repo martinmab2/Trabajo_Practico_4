@@ -3,7 +3,7 @@
 <head data-th-replace="~{/layouts/header :: head}"></head>
 <body>
 	<header data-th-replace="~{/layouts/header :: header}"></header>
-	<main class="container my-5">
+	<main class="container my-2">
 		<div class="row justify-content-center">
 			<div class="col-md-8 col-lg-6">
 				<div class="card shadow-sm">
@@ -16,7 +16,7 @@
 							<div class="mb-3">
 								<label for="LU" class="form-label"> <i
 									class="fas fa-id-card me-1"></i> LU (Libreta Universitaria)
-								</label> <input type="text" class="form-control" id="LU"
+								</label> <input type="number" class="form-control" id="LU"
 									th:field="*{LU}" th:readonly="${edicion}" required
 									pattern="[0-9]{5}" placeholder="Ej: 12345">
 								<div class="invalid-feedback">Ingrese un LU válido (5
@@ -25,7 +25,7 @@
 							<div class="mb-3">
 								<label for="dni" class="form-label"> <i
 									class="fas fa-address-card me-1"></i> Número de Documento
-								</label> <input type="text" class="form-control" id="dni"
+								</label> <input type="number" class="form-control" id="dni"
 									th:field="*{dni}" required pattern="[0-9]{7,8}"
 									placeholder="Ej: 12345678">
 								<div class="invalid-feedback">Ingrese un DNI válido (7 u 8
@@ -77,10 +77,13 @@
 									th:field="*{domicilio}" required placeholder="Ej: Calle 123">
 								<div class="invalid-feedback">Ingrese un domicilio válido.</div>
 							</div>
-							<div class="d-grid gap-2">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 								<button class="btn btn-primary" type="submit">
-									<i class="fas fa-save me-1"></i> Guardar Alumno
+									<i class="fas fa-save me-1"></i> Guardar
 								</button>
+								<a th:href="@{/alumno/listado}" class="btn btn-secondary ms-2">
+									<i class="fas fa-times me-1"></i> Cancelar
+								</a>
 							</div>
 						</form>
 					</div>
@@ -91,3 +94,4 @@
 	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 </body>
 </html>
+

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ar.edu.unju.fi.repository.ICarreraRepository;
 import ar.edu.unju.fi.repository.IDocenteRepository;
 import ar.edu.unju.fi.repository.IMateriaRepository;
+import ar.edu.unju.fi.enumerados.Modalidad;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.model.Materia;
@@ -42,6 +43,7 @@ public class MateriaController {
         model.addAttribute("edicion", false);
         model.addAttribute("docentes", docenteRepository.findAll());
         model.addAttribute("carreras", carreraRepository.findAll());
+        model.addAttribute("modalidad", Modalidad.values());
         model.addAttribute("titulo", "Nueva Materia");
         return "materia";
     }
@@ -76,6 +78,7 @@ public class MateriaController {
         model.addAttribute("edicion", true);
         model.addAttribute("docentes", docenteRepository.findAll());
         model.addAttribute("carreras", carreraRepository.findAll());
+        model.addAttribute("modalidad", Modalidad.values());
         model.addAttribute("titulo", "Modificar Materia");
         return "materia";
     }

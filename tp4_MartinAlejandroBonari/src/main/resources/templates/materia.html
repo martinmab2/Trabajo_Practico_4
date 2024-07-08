@@ -17,9 +17,9 @@
 							<div class="mb-3">
 								<label for="codigo" class="form-label"> <i
 									class="fas fa-hashtag me-1"></i> Código de Materia
-								</label> <input type="text" class="form-control" id="codigo"
+								</label> <input type="number" class="form-control" id="codigo"
 									th:field="*{codigo}" th:readonly="${edicion}" required
-									pattern="[A-Z]{3}[0-9]{3}" placeholder="Ej: MAT101">
+									pattern="[0-9]{3}" placeholder="Ej:101">
 								<div class="invalid-feedback">El código debe tener el
 									formato AAA000 (tres letras mayúsculas y tres números).</div>
 							</div>
@@ -55,7 +55,7 @@
 									th:field="*{modalidad}" required>
 									<option value="">Seleccione una modalidad</option>
 									<option
-										th:each="modalidad : ${T(ar.edu.unju.fi.model.Modalidad).values()}"
+										th:each="modalidad : ${T(ar.edu.unju.fi.enumerados.Modalidad).values()}"
 										th:value="${modalidad}" th:text="${modalidad}"></option>
 								</select>
 								<div class="invalid-feedback">Seleccione una modalidad
@@ -86,13 +86,13 @@
 								<div class="invalid-feedback">Seleccione una carrera
 									válida.</div>
 							</div>
-							<div class="d-grid gap-2">
+							<div class="gap-2 d-flex justify-content-end">
 								<button type="submit" class="btn btn-primary">
-									<i class="fas fa-save me-1"></i> Guardar Materia
+									<i class="fas fa-save me-1"></i> Guardar
 								</button>
 								<a th:href="@{/materia/listado}"
-									class="btn btn-outline-secondary"> <i
-									class="fas fa-arrow-left me-1"></i> Volver
+									class="btn btn-secondary">
+									<i class="fas fa-times me-1"></i> Cancelar
 								</a>
 							</div>
 						</form>
