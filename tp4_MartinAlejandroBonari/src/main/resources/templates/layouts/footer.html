@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head data-th-replace="~{/layouts/header :: head}"></head>
+
 <body>
-	<footer th:fragment="footer" class="bg-dark d-flex justify-content-evenly align-items-center py-5">
-		<div class=" text-align-center">
-			<h3 class="text-white">Datos de Interes</h3>
-			<ul class="text-white">
-				<li>DIRECCION: Ítalo Palanca Nº 10</li>
-				<li>LOCALIDAD: San Salvador de Jujuy. Jujuy - Argentina</li>
-				<li>CONTACTO: info@fi.unju.edu.ar</li>
-				<li>TELÉFONO: 388-422-1576</li>
-				<li>HORARIO: 14:30 a 19:30 hs</li>
-			</ul>
+	<aside th:fragment="aside">
+		<div class="d-flex justify-content-center align-items-center">
+			<div class="card"
+				style="width: 18rem; box-shadow: 0 16px 26px rgb(108, 108, 108);">
+				<a
+					th:href="@{https://www.fi.unju.edu.ar/secretarias/sec-academica/calendario-academico.html}"
+					target="_blank"> <img th:src="@{/images/calendario.png}"
+					class="card-img-top" alt="calendario academico"
+					style="padding: 18px;">
+				</a>
+				<div class="card-body">
+					<p class="card-text">Conoce el Calendario Académico que Tenemos
+						este Año Lectivo 2024.</p>
+				</div>
+			</div>
 		</div>
-		<div class="">
-			<img src="/images/logotipo.png"
-				alt="Logotipo de la Facultad de Ingeniería - UNJU" class="img-fluid"
-				style="max-height: 200px;">
+		<br>
+		<div class="d-flex justify-content-center align-items-center">
+			<div class="card"
+				style="width: 18rem; box-shadow: 0 16px 26px rgb(108, 108, 108);">
+				<a th:href="@{https://virtual.unju.edu.ar/bibliotecas/}"
+					target="_blank"> <img th:src="@{/images/biblioteca.png}"
+					class="card-img-top" alt="biblioteca" style="padding: 5px;">
+				</a>
+				<div class="card-body">
+					<p class="card-text">Acceso a la biblioteca virtual, solicitud
+						de libros solo con tu Libreta Universitaria.</p>
+				</div>
+			</div>
 		</div>
-		<div class=" text-align-center">
-			<h3 class="text-white">Redes Sociales</h3>
-			<ul class="text-white">
-				<li><a>Instagram</a></li>
-				<li><a>Facebook</a></li>
-				<li><a>Youtube</a></li>
-				<li><a>Linkedin</a></li>
-			</ul>
-		</div>
-	</footer>
+	</aside>
 </body>
+
 </html>

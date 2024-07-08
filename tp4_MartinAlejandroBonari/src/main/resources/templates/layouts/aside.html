@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head data-th-replace="~{/layouts/header :: head}"></head>
+
 <body>
 	<aside th:fragment="aside">
-		<nav class="nav flex-column bg-dark p-2 text-center rounded">
-			<div>
-				<a class="nav-link active text-white my-2" aria-current="page" href="https://www.fi.unju.edu.ar/servicios/biblioteca.html">Biblioteca</a>
+		<div class="d-flex justify-content-center align-items-center">
+			<div class="card"
+				style="width: 18rem; box-shadow: 0 16px 26px rgb(108, 108, 108);">
+				<a
+					th:href="@{https://www.fi.unju.edu.ar/secretarias/sec-academica/calendario-academico.html}"
+					target="_blank"> <img th:src="@{/images/calendario.png}"
+					class="card-img-top" alt="calendario academico"
+					style="padding: 18px;">
+				</a>
+				<div class="card-body">
+					<p class="card-text">Conoce el Calendario Académico que Tenemos
+						este Año Lectivo 2024.</p>
+				</div>
 			</div>
-			<div>
-				<a class="nav-link text-white my-2" href="https://www.fi.unju.edu.ar/secretarias/sec-academica/calendario-academico.html">Calendario Académico</a> 
-			</div>	
-			<div>
-				<a class="nav-link text-white my-2" href="https://www.fi.unju.edu.ar/investigacion-noticias.html">Investigación</a>
+		</div>
+		<br>
+		<div class="d-flex justify-content-center align-items-center">
+			<div class="card"
+				style="width: 18rem; box-shadow: 0 16px 26px rgb(108, 108, 108);">
+				<a th:href="@{https://virtual.unju.edu.ar/bibliotecas/}"
+					target="_blank"> <img th:src="@{/images/biblioteca.png}"
+					class="card-img-top" alt="biblioteca" style="padding: 5px;">
+				</a>
+				<div class="card-body">
+					<p class="card-text">Acceso a la biblioteca virtual, solicitud
+						de libros solo con tu Libreta Universitaria.</p>
+				</div>
 			</div>
-			<div>
-				<a class="nav-link text-white my-2 pb-4" href="https://www.fi.unju.edu.ar/component/search/?searchword=laboratori&searchphrase=all&Itemid=288">Laboratorios</a>
-			</div>			
-		</nav>
+		</div>
 	</aside>
 </body>
+
 </html>
