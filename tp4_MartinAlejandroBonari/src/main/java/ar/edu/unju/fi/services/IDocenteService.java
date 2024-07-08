@@ -9,6 +9,6 @@ public interface IDocenteService {
 	
 	public List<Docente> getAllDocentes();
 	
-	public Docente buscarDocenteConLegajo(Integer legajo);
+	public Docente buscarDocenteConLegajo(Integer legajo);
 
 }
