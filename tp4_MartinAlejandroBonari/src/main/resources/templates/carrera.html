@@ -1,44 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head data-th-replace="~{/layouts/header :: head}"></head>
+<head data-th-replace="~{/layouts/header :: head}">
+</head>
 <body>
-    <header data-th-replace="~{/layouts/header :: header}"></header>
-    <div class="card col-9 container my-5">
-        <form class="row g-3 m-3" th:action="${edicion} ? @{/carrera/modificar} : @{/carrera/guardar}" th:object="${carrera}" method="post">
-            <div>
-                <h2 th:text="${edicion} ? 'Modificar Carrera' : 'Nueva Carrera'" class="text-center"></h2>    
-            </div>
-            <div class="col-md-6">
-                <label for="codigo" class="form-label">Codigo de Carrera</label>
-                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" th:readonly="${edicion}" required>
-                <div class="valid-feedback">Looks good!</div>
-            </div>
-            <div class="col-md-6">
-                <label for="nombre" class="form-label">Nombre de Carrera</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
-                <div class="valid-feedback">Looks good!</div>
-            </div>
-            <div class="col-md-6">
-                <label for="duracion" class="form-label">Duración</label>
-                <div class="input-group has-validation">
-                     <input type="number" class="form-control" id="cantidadAnios" th:field="*{cantidadAnios}" required>
-                    <div class="invalid-feedback">Please choose a duration.</div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="estado" class="form-label">Estado</label>
-                <select class="form-select" id="estado" th:field="*{estado}" required>
-                    <option value="">Seleccione o modifique el estado de la carrera</option>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                </select>
-            </div>
-            
-            <div class="col-12 m-3">
-                <button class="btn btn-primary" type="submit">Confirmar</button>
-            </div>
-        </form>
-    </div>
-    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+	<main class="container my-5">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h2 class="text-center display-6 mb-4"
+							th:text="${edicion} ? 'Modificar Carrera' : 'Nueva Carrera'"></h2>
+						<form
+							th:action="${edicion} ? @{/carrera/modificar} : @{/carrera/guardar}"
+							th:object="${carrera}" method="post">
+							<div class="mb-3">
+								<label for="codigo" class="form-label"> <i
+									class="fas fa-hashtag me-1"></i> Código de Carrera
+								</label> <input type="text" class="form-control" id="codigo"
+									th:field="*{codigo}" th:readonly="${edicion}" required
+									pattern="[A-Z]{2}-[0-9]{3}" placeholder="Ej: IN-001">
+								<div class="invalid-feedback">El código debe tener el
+									formato AA-000 (dos letras mayúsculas y tres números).</div>
+							</div>
+							<div class="mb-3">
+								<label for="nombre" class="form-label"> <i
+									class="fas fa-graduation-cap me-1"></i> Nombre de Carrera
+								</label> <input type="text" class="form-control" id="nombre"
+									th:field="*{nombre}" required
+									placeholder="Ej: Ingeniería en Informática">
+								<div class="invalid-feedback">Ingrese un nombre de carrera
+									válido.</div>
+							</div>
+							<div class="mb-3">
+								<label for="duracion" class="form-label"> <i
+									class="fas fa-clock me-1"></i> Duración (años)
+								</label> <input type="number" class="form-control" id="cantidadAnios"
+									th:field="*{cantidadAnios}" min="1" required
+									placeholder="Ej: 5">
+								<div class="invalid-feedback">Ingrese una duración válida
+									(número mayor o igual a 1).</div>
+							</div>
+							<div class="mb-3">
+								<label for="estado" class="form-label"> <i
+									class="fas fa-toggle-on me-1"></i> Estado
+								</label> <select class="form-select" id="estado" th:field="*{estado}"
+									required>
+									<option value="">Seleccione o modifique el estado de
+										la carrera</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+								</select>
+								<div class="invalid-feedback">Seleccione un estado válido.</div>
+							</div>
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" type="submit">
+									<i class="fas fa-save me-1"></i> Guardar Carrera
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 </body>
-</html>
