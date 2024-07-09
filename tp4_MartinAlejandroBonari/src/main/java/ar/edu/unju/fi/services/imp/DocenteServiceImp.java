@@ -40,7 +40,7 @@ public class DocenteServiceImp implements IDocenteService {
 	@Override
 	public List<DocenteDTO> mostrarDocentes() {
 		List<DocenteDTO> docentesDto = new ArrayList<DocenteDTO>();
-		docentesDto = (List<DocenteDTO>) docenteMap.ConvertirListaDocenteAListaDocenteDTO(docenteRepository.findbyEstado(true));
+		docentesDto = (List<DocenteDTO>) docenteMap.ConvertirListaDocenteAListaDocenteDTO(docenteRepository.findByEstado(true));
 		LOGGER.info("Lista de docentes");
 		return docentesDto;
 	}

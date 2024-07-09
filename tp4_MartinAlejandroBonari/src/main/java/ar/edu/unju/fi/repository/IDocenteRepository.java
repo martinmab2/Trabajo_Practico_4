@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ar.edu.unju.fi.model.Docente;
 
 public interface IDocenteRepository extends JpaRepository<Docente, Integer> {
-   List <Docente> findbyEstado(boolean estado);
+    List<Docente> findByEstado(boolean estado);
 }

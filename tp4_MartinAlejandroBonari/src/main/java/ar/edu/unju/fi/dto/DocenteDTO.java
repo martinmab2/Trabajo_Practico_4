@@ -3,6 +3,9 @@ package ar.edu.unju.fi.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import org.springframework.stereotype.Component;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -11,6 +14,7 @@ import jakarta.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class DocenteDTO {
 	private Integer id;
 	@NotBlank(message = "El legajo no puede ser nulo")
