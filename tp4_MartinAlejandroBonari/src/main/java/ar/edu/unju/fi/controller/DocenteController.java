@@ -8,41 +8,46 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import ar.edu.unju.fi.model.Docente;
-import ar.edu.unju.fi.repository.IDocenteRepository;
+import org.springframework.web.servlet.ModelAndView;
+import ar.edu.unju.fi.dto.DocenteDTO;
+import ar.edu.unju.fi.services.IDocenteService;
 
 @Controller
 @RequestMapping("/docente")
 public class DocenteController {
 
     @Autowired
-    private IDocenteRepository docenteRepository;
+    private IDocenteService docenteService;
+    
+    @Autowired
+    private DocenteDTO docenteDTO;
 
     @GetMapping("/listado")
     public String getListaDocentesPage(Model model) {
-        model.addAttribute("docentes", docenteRepository.findAll());
+        model.addAttribute("docentes", docenteService.mostrarDocentes());
         model.addAttribute("titulo", "Docentes");
         return "/eDocente/docentes";
     }
 
     @GetMapping("/nuevo")
     public String getNuevoDocentePage(Model model) {
-        model.addAttribute("docente", new Docente());
+        model.addAttribute("docente", docenteDTO);
         model.addAttribute("edicion", false);
         model.addAttribute("titulo", "Nuevo Docente");
         return "/eDocente/docente";
     }
 
     @PostMapping("/guardar")
-    public String guardarDocente(@ModelAttribute("docente") Docente docente) {
-        docenteRepository.save(docente);
-        return "redirect:/docente/listado";
-    }
+	public ModelAndView getGuadarDocentesPage(@ModelAttribute("docente") DocenteDTO docentedto) {
+		ModelAndView modelView = new ModelAndView("/docente/listado");
+		docenteService.guardarDocente(docentedto);
+		modelView.addObject("docentes", docenteService.mostrarDocentes());
+		return modelView;
+	} 
 
-    @GetMapping("/modificar/{legajo}")
-    public String getModificarDocentePage(Model model, @PathVariable("legajo") Integer legajo) {
-        Docente docente = docenteRepository.findById(legajo).orElse(null);
+    @GetMapping("/modificar/{id}")
+    public String getModificarDocentePage(Model model, @PathVariable("id") Integer id) {
+        DocenteDTO docente = docenteService.buscarDocente(id);
         model.addAttribute("docente", docente);
         model.addAttribute("edicion", true);
         model.addAttribute("titulo", "Modificar Docente");
@@ -50,14 +55,14 @@ public class DocenteController {
     }
 
     @PostMapping("/modificar")
-    public String modificarDocente(@ModelAttribute("docente") Docente docente) {
-        docenteRepository.save(docente);
+    public String modificarDocente(@ModelAttribute("docente") DocenteDTO docentedto) {
+        docenteService.modificarDocente(docentedto);
         return "redirect:/docente/listado";
     }
 
-    @GetMapping("/eliminar/{legajo}")
-    public String eliminarDocente(@PathVariable("legajo") Integer legajo) {
-        docenteRepository.deleteById(legajo);
+    @GetMapping("/eliminar/{id}")
+    public String eliminarDocente(@PathVariable("id") Integer id) {
+        docenteService.EliminarDocente(id);
         return "redirect:/docente/listado";
     }
 }
