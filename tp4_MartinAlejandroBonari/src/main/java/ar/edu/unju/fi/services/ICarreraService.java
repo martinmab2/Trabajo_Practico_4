@@ -5,8 +5,8 @@ import ar.edu.unju.fi.model.Carrera;
 
 public interface ICarreraService {
 	public void añadirCarrera(Carrera carrera);
-	
+
 	public List<Carrera> getAllCarreras();
-	
-	public Carrera buscarCarreraConCodigo(String codigo);
+
+	public Carrera buscarCarreraConCodigo(Long codigo);
 }

@@ -10,4 +10,5 @@ public interface IMateriaService {
 	public List<Materia> getAllMateria();
 
 	public Materia buscarMateriaPorCodigo(int codigo);
+	
 }

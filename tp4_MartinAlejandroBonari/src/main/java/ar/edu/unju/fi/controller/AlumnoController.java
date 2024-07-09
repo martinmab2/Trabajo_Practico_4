@@ -8,61 +8,62 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import ar.edu.unju.fi.collections.AlumnoCollection;
+
 import ar.edu.unju.fi.model.Alumno;
+import ar.edu.unju.fi.repository.IAlumnoRepository;
 
 @Controller
 @RequestMapping("/alumno")
 public class AlumnoController {
-	
-	@Autowired
-	private Alumno alumno;
-	
-	@GetMapping("/listado")
-	public String getAlumnosPage(Model model) {
-		model.addAttribute("alumnos", AlumnoCollection.getAlumnos());
-		model.addAttribute("titulo", "Alumnos");
-		return "alumnos";
-	}
-	
-	@GetMapping("/nuevo")
-	public String getAddAlumnoPage(Model model) {
-		boolean edicion=false;
-		model.addAttribute("alumno", alumno);
-		model.addAttribute("edicion", edicion);
-		model.addAttribute("titulo", "Agregar Alumno");
-		return "alumno";
-	}
-	
-	@PostMapping("/guardar")
-	public String guardarAlumno(@ModelAttribute("alumno") Alumno alumno) {
-		ModelAndView modelView = new ModelAndView("alumnos");
-		AlumnoCollection.agregarAlumno(alumno);
-		modelView.addObject("alumnos", AlumnoCollection.getAlumnos());
-		return "redirect:/alumno/listado";
-	}
-	
-	@GetMapping("/modificar/{LU}")
-	public String getModificarAlumnoPage(Model model, @PathVariable(value="LU") String LU) {
-		Alumno alumnoEncontrado = new Alumno();
-		boolean edicion=true;
-		alumnoEncontrado = AlumnoCollection.buscarAlumnoPorLU(LU);
-		model.addAttribute("edicion", edicion);
-		model.addAttribute("alumno", alumnoEncontrado);
-		model.addAttribute("titulo", "Modificar Alumno");
-		return "alumno";
-	}
-	
-	@PostMapping("/modificar")
-	public String modificarAlumno(@ModelAttribute("alumno") Alumno alumno) {
-		AlumnoCollection.modificarAlumno(alumno);
-		return "redirect:/alumno/listado";
-	}
-	
-	@GetMapping("/eliminar/{LU}")
-	public String eliminarAlumno(@PathVariable(value="LU") String LU) {
-		AlumnoCollection.eliminarAlumno(LU);
-		return "redirect:/alumno/listado";
-	}
+
+    @Autowired
+    private IAlumnoRepository alumnoRepository;
+
+    @GetMapping("/listado")
+    public String getListaAlumnosPage(Model model) {
+        model.addAttribute("alumnos", alumnoRepository.findAll());
+        model.addAttribute("titulo", "Alumnos");
+        return "/eAlumno/alumnos";
+    }
+
+    @GetMapping("/nuevo")
+    public String getNuevoAlumnoPage(Model model) {
+        model.addAttribute("alumno", new Alumno());
+        model.addAttribute("edicion", false);
+        model.addAttribute("titulo", "Nuevo Alumno");
+        return "/eAlumno/alumno";
+    }
+
+    @PostMapping("/guardar")
+    public String guardarAlumno(@ModelAttribute("alumno") Alumno alumno) {
+        alumnoRepository.save(alumno);
+        return "redirect:/alumno/listado";
+    }
+
+    @GetMapping("/modificar/{dni}")
+    public String getModificarAlumnoPage(Model model, @PathVariable("dni") Integer dni) {
+        Alumno alumno = alumnoRepository.findById(dni).orElse(null);
+        model.addAttribute("alumno", alumno);
+        model.addAttribute("edicion", true);
+        model.addAttribute("titulo", "Modificar Alumno");
+        return "/eAlumno/alumno";
+    }
+
+    @PostMapping("/modificar")
+    public String modificarAlumno(@ModelAttribute("alumno") Alumno alumno) {
+        alumnoRepository.save(alumno);
+        return "redirect:/alumno/listado";
+    }
+
+    @GetMapping("/eliminar/{dni}")
+    public String eliminarAlumno(@PathVariable("dni") Integer dni) {
+        alumnoRepository.deleteById(dni);
+        return "redirect:/alumno/listado";
+    }
+
+    @GetMapping("/filtrar")
+    public String getFiltrarAlumnoPage(Model model) {
+        model.addAttribute("titulo", "Filtrar Alumno");
+        return "consulta/filtrarAlumno";
+    }
 }

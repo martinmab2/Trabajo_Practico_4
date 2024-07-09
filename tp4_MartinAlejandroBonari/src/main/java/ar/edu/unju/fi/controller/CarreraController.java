@@ -8,62 +8,61 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.collections.CarreraCollection;
 import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.repository.ICarreraRepository;
 
 @Controller
 @RequestMapping("/carrera")
 public class CarreraController {
-	
+
 	@Autowired
-	private Carrera carrera;
-	
+	private ICarreraRepository carreraRepository;
+
 	@GetMapping("/listado")
-	public String getCarrerasPage(Model model) {
-		model.addAttribute("carreras", CarreraCollection.getCarreras());
+	public String getListaCarrerasPage(Model model) {
+		model.addAttribute("carreras", carreraRepository.findAll());
 		model.addAttribute("titulo", "Carreras");
-		return "carreras";
+		return "/eCarrera/carreras";
 	}
-	
+
 	@GetMapping("/nuevo")
-	public String getAddCarreraPage(Model model) {
-		boolean edicion=false;
-		model.addAttribute("carrera", carrera);
-		model.addAttribute("edicion", edicion);
-		model.addAttribute("titulo", "Agregar Carrera");
-		return "carrera";
+	public String getNuevaCarreraPage(Model model) {
+		model.addAttribute("carrera", new Carrera());
+		model.addAttribute("edicion", false);
+		model.addAttribute("titulo", "Nueva Carrera");
+		return "/eCarrera/carrera";
 	}
-	
+
 	@PostMapping("/guardar")
 	public String guardarCarrera(@ModelAttribute("carrera") Carrera carrera) {
-		ModelAndView modelView = new ModelAndView("carreras");
-		CarreraCollection.agregarCarrera(carrera);
-		modelView.addObject("carreras", CarreraCollection.getCarreras());
+		carreraRepository.save(carrera);
 		return "redirect:/carrera/listado";
 	}
-	
+
 	@GetMapping("/modificar/{codigo}")
-	public String getModificarCarreraPage(Model model, @PathVariable(value="codigo") String codigo) {
-		Carrera carreraEncontrada = new Carrera();
-		boolean edicion=true;
-		carreraEncontrada = CarreraCollection.buscarCarreraConCodigo(codigo);
-		model.addAttribute("edicion", edicion);
-		model.addAttribute("carrera", carreraEncontrada);
-		model.addAttribute("titulo", "Editar Carrera");
-		return "carrera";
+	public String getModificarCarreraPage(Model model, @PathVariable("codigo") Long codigo) {
+		Carrera carrera = carreraRepository.findById(codigo).orElse(null);
+		model.addAttribute("carrera", carrera);
+		model.addAttribute("edicion", true);
+		model.addAttribute("titulo", "Modificar Carrera");
+		return "/eCarrera/carrera";
 	}
-	
+
 	@PostMapping("/modificar")
 	public String modificarCarrera(@ModelAttribute("carrera") Carrera carrera) {
-		CarreraCollection.modificarCarrera(carrera);
+		carreraRepository.save(carrera);
 		return "redirect:/carrera/listado";
 	}
-	
+
 	@GetMapping("/eliminar/{codigo}")
-	public String eliminarCarrera(@PathVariable(value="codigo") String codigo) {
-		CarreraCollection.eliminarCarrera(codigo);
+	public String eliminarCarrera(@PathVariable("codigo") Long codigo) {
+		carreraRepository.deleteById(codigo);
 		return "redirect:/carrera/listado";
 	}
+	 @GetMapping("/consultar")
+	    public String getConsultarAlumnoPage(Model model) {
+	        model.addAttribute("titulo", "Consultar Alumnos Inscriptos");
+	        return "consulta/consultarAlumno";
+	    }
 }
