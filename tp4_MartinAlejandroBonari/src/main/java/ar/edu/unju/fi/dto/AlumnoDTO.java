@@ -2,9 +2,7 @@ package ar.edu.unju.fi.dto;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import ar.edu.unju.fi.model.Materia;
 import lombok.AllArgsConstructor;
 import lombok.Data;

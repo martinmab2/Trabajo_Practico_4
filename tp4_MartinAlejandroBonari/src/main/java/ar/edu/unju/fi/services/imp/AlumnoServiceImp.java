@@ -34,7 +34,7 @@ public class AlumnoServiceImp implements IAlumnoService {
 	}
 
 	@Override
-	public List<AlumnoDTO> mostrarALumnos() {
+	public List<AlumnoDTO> getAllALumnos() {
 		List<AlumnoDTO> alumnosdto = new ArrayList<AlumnoDTO>();
 		alumnosdto = alumnoMap.toAlumnoDTOList(alumnoRepository.findByEstado(true));
     LOGGER.info("Lista de alumnos");

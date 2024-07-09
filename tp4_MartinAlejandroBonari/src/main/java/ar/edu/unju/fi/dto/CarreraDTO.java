@@ -19,6 +19,5 @@ public class CarreraDTO {
     private String nombre;
     private int cantidadAnios;
     private boolean estado;
-    
     private List<Materia> materias;
 }

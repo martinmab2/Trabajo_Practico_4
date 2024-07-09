@@ -7,7 +7,7 @@ import ar.edu.unju.fi.dto.AlumnoDTO;
 public interface IAlumnoService {
 	public void crearAlumno(AlumnoDTO alumnodto);
 	
-    public List<AlumnoDTO> mostrarALumnos();
+    public List<AlumnoDTO> getAllALumnos();
     
     public void eliminarAlumno(Long id);
     
