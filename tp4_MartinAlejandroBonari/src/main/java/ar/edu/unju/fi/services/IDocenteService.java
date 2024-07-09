@@ -8,8 +8,8 @@ public interface IDocenteService {
 	public void guardarDocente(DocenteDTO docentedto);
     public List<DocenteDTO> mostrarDocentes();
     public List<DocenteDTO> mostrarDocentesNoAsignados();
-    public void EliminarDocente(Long id);
+    public void EliminarDocente(Integer id);
     public void modificarDocente(DocenteDTO docentedto);
-    public DocenteDTO buscarDocente(Long id);
+    public DocenteDTO buscarDocente(Integer id);
 
 }

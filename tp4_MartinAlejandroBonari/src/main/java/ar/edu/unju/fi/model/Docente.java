@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 @Component
 @Entity
-@Table (name = "docentes")
+@Table (name = "docente")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -41,6 +41,6 @@ public class Docente {
     @Column (name = "Docente_estado")
     private boolean estado;
     
-    @OneToOne (mappedBy  = "docentes")
+    @OneToOne (mappedBy  = "docente")
     private Materia materia;
 }

@@ -40,7 +40,7 @@ public class DocenteServiceImp implements IDocenteService {
 	@Override
 	public List<DocenteDTO> mostrarDocentes() {
 		List<DocenteDTO> docentesDto = new ArrayList<DocenteDTO>();
-		docentesDto = (List<DocenteDTO>) docenteMap.ConvertirListaDocenteAListaDocenteDTO(docenteRepository.findByEstado(true));
+		docentesDto = (List<DocenteDTO>) docenteMap.ConvertirListaDocenteAListaDocenteDTO(docenteRepository.findbyEstado(true));
 		LOGGER.info("Lista de docentes");
 		return docentesDto;
 	}
@@ -49,7 +49,7 @@ public class DocenteServiceImp implements IDocenteService {
 	    List<Docente> docentes = docenteRepository.findAll();
 
 	
-	    List<Long> idsDocentesAsignados = new ArrayList<>();
+	    List<Integer> idsDocentesAsignados = new ArrayList<>();
 	    List<Materia> materiasActivas = materiaRepository.findByEstado(true);
 	    for (Materia materia : materiasActivas) {
 	        idsDocentesAsignados.add(materia.getDocente().getId());
@@ -66,7 +66,7 @@ public class DocenteServiceImp implements IDocenteService {
 	
 
 	@Override
-	public void EliminarDocente(Long id) {
+	public void EliminarDocente(Integer id) {
 	    Docente docente = docenteRepository.findById(id).get();
 	    docente.setEstado(false);
 	    docenteRepository.save(docente);
@@ -82,7 +82,7 @@ public class DocenteServiceImp implements IDocenteService {
 	}
 
 	@Override
-	public DocenteDTO buscarDocente(Long id) {
+	public DocenteDTO buscarDocente(Integer id) {
 		Optional<Docente> OpDocente = docenteRepository.findById(id);
 		LOGGER.info("Busqueda en proceso");
 		if(OpDocente.isPresent()) {
@@ -93,5 +93,5 @@ public class DocenteServiceImp implements IDocenteService {
 		}else {
 			return null;
 		}
-		
 	}
+}
