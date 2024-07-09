@@ -2,6 +2,8 @@ package ar.edu.unju.fi.dto;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import ar.edu.unju.fi.enumerados.Modalidad;
 import ar.edu.unju.fi.model.Alumno;
 import lombok.AllArgsConstructor;
@@ -13,6 +15,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@Component
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

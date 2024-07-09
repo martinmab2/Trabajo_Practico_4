@@ -3,18 +3,20 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.repository.ICarreraRepository;
-import ar.edu.unju.fi.repository.IDocenteRepository;
-import ar.edu.unju.fi.repository.IMateriaRepository;
+import ar.edu.unju.fi.services.ICarreraService;
+import ar.edu.unju.fi.services.IDocenteService;
+import ar.edu.unju.fi.services.IMateriaService;
+import jakarta.validation.Valid;
+import ar.edu.unju.fi.dto.MateriaDTO;
 import ar.edu.unju.fi.enumerados.Modalidad;
-import ar.edu.unju.fi.model.Carrera;
-import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.model.Materia;
 
 @Controller
@@ -22,17 +24,20 @@ import ar.edu.unju.fi.model.Materia;
 public class MateriaController {
 	
     @Autowired
-    private IMateriaRepository materiaRepository;
+    private MateriaDTO materiaDTO;
 
     @Autowired
-    private IDocenteRepository docenteRepository;
+    private IMateriaService materiaService;
 
     @Autowired
-    private ICarreraRepository carreraRepository;
+    private ICarreraService carreraService;
+    
+    @Autowired
+    private IDocenteService docenteService;
 
     @GetMapping("/listado")
     public String getListaMateriasPage(Model model) {
-        model.addAttribute("materias", materiaRepository.findAll());
+        model.addAttribute("materias", materiaService.listaMateria());
         model.addAttribute("titulo", "Materias");
         return "/eMateria/materias";
     }
@@ -41,74 +46,49 @@ public class MateriaController {
     public String getNuevaMateriaPage(Model model) {
         model.addAttribute("materia", new Materia());
         model.addAttribute("edicion", false);
-        model.addAttribute("docentes", docenteRepository.findAll());
-        model.addAttribute("carreras", carreraRepository.findAll());
+        model.addAttribute("docentes", docenteService.mostrarDocentesNoAsignados());
+        model.addAttribute("carreras", carreraService.getAllCarreras());
         model.addAttribute("modalidad", Modalidad.values());
         model.addAttribute("titulo", "Nueva Materia");
         return "/eMateria/materia";
     }
 
     @PostMapping("/guardar")
-    public String guardarMateria(@ModelAttribute("materia") Materia materia, Model model) {
-        Docente docenteSeleccionado = docenteRepository.findById(materia.getDocente().getLegajo()).orElse(null);
-        Carrera carreraSeleccionada = carreraRepository.findById(materia.getCarrera().getCodigo()).orElse(null);
+	public ModelAndView guardarMateria(@Valid @ModelAttribute("materia") MateriaDTO materiaDTO, BindingResult result) {
+	    if (result.hasErrors()) {
+	        ModelAndView modelView = new ModelAndView("/eMateria/materia");
+	        modelView.addObject("docentes", docenteService.mostrarDocentesNoAsignados());
+	        modelView.addObject("carreras", carreraService.getAllCarreras());
+	        return modelView;
+	    }
+	    materiaService.crearMateria(materiaDTO);
+	    ModelAndView modelView = new ModelAndView("redirect:/materia/listado");
+	    modelView.addObject("materias", materiaService.listaMateria());
+	    return modelView;
+	}
 
-        if (docenteSeleccionado != null && carreraSeleccionada != null) {
-            materia.setDocente(docenteSeleccionado);
-            materia.setCarrera(carreraSeleccionada);
-            materiaRepository.save(materia);
-            return "redirect:/materia/listado";
-        } else {
-            if (docenteSeleccionado == null) {
-                model.addAttribute("errorDocente", "No se encontró el docente seleccionado.");
-            }
-            if (carreraSeleccionada == null) {
-                model.addAttribute("errorCarrera", "No se encontró la carrera seleccionada.");
-            }
-            model.addAttribute("docentes", docenteRepository.findAll());
-            model.addAttribute("carreras", carreraRepository.findAll());
-            return "/eMateria/materia";
-        }
-    }
-
-    @GetMapping("/modificar/{codigo}")
-    public String getModificarMateriaPage(Model model, @PathVariable("codigo") Integer codigo) {
-        Materia materia = materiaRepository.findById(codigo).orElse(null);
+    @GetMapping("/modificar/{id}")
+    public String getModificarMateriaPage(Model model, @PathVariable("id") Integer id) {
+        MateriaDTO materia = materiaService.buscarMateria(id);
         model.addAttribute("materia", materia);
         model.addAttribute("edicion", true);
-        model.addAttribute("docentes", docenteRepository.findAll());
-        model.addAttribute("carreras", carreraRepository.findAll());
+        model.addAttribute("docentes", docenteService.mostrarDocentesNoAsignados());
+        model.addAttribute("carreras", carreraService.getAllCarreras());
         model.addAttribute("modalidad", Modalidad.values());
         model.addAttribute("titulo", "Modificar Materia");
         return "/eMateria/materia";
     }
 
     @PostMapping("/modificar")
-    public String modificarMateria(@ModelAttribute("materia") Materia materia, Model model) {
-        Docente docenteSeleccionado = docenteRepository.findById(materia.getDocente().getLegajo()).orElse(null);
-        Carrera carreraSeleccionada = carreraRepository.findById(materia.getCarrera().getCodigo()).orElse(null);
+	public String modificarMateria(@ModelAttribute("materia") MateriaDTO materiaDTO) {
+		materiaService.modificarMateria(materiaDTO);
+		return "redirect:/materia/listado";
+	}
 
-        if (docenteSeleccionado != null && carreraSeleccionada != null) {
-            materia.setDocente(docenteSeleccionado);
-            materia.setCarrera(carreraSeleccionada);
-            materiaRepository.save(materia);
-            return "redirect:/materia/listado";
-        } else {
-            if (docenteSeleccionado == null) {
-                model.addAttribute("errorDocente", "No se encontró el docente seleccionado.");
-            }
-            if (carreraSeleccionada == null) {
-                model.addAttribute("errorCarrera", "No se encontró la carrera seleccionada.");
-            }
-            model.addAttribute("docentes", docenteRepository.findAll());
-            model.addAttribute("carreras", carreraRepository.findAll());
-            return "/eMateria/materia";
-        }
-    }
-
-    @GetMapping("/eliminar/{codigo}")
-    public String eliminarMateria(@PathVariable("codigo") Integer codigo) {
-        materiaRepository.deleteById(codigo);
+    @GetMapping("/eliminar/{id}")
+    public String eliminarMateria(@PathVariable("id") Integer id) {
+    	MateriaDTO materiafindDTO = materiaService.buscarMateria(id);
+        materiaService.eliminarMateria(materiafindDTO);
         return "redirect:/materia/listado";
     }
 }
