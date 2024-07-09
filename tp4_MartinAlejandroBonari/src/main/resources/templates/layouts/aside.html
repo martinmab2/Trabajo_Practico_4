@@ -21,13 +21,20 @@
 		<div class="d-flex justify-content-center align-items-center">
 			<div class="card" style="width: 18rem; box-shadow: 0 16px 26px rgb(108, 108, 108);">
 				<a th:href="@{https://virtual.unju.edu.ar/bibliotecas/}" target="_blank">
-					<img th:src="@{/images/buscar.png}" class="card-img-top" alt="biblioteca"
-						style="padding: 5px;">
+					<img th:src="@{/images/buscar.png}" class="card-img-top" alt="biblioteca" style="padding: 5px;">
 				</a>
 				<div class="card-body">
 					<p class="card-text">Acceso a la biblioteca virtual, solicitud de libros solo con tu Libreta
 						Universitaria.</p>
 				</div>
+			</div>
+		</div>
+	</aside>
+	<aside th:fragment="publicidad">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Publicidad</h5>
+				<img th:src="@{/images/publicidad.gif}" class="card-img-top" alt="Publicidad">
 			</div>
 		</div>
 	</aside>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head data-th-replace="~{/layouts/header :: head}">
 </head>
+
 <body>
 	<header data-th-replace="~{/layouts/header :: header}"></header>
 	<main class="container my-2">
@@ -11,41 +13,35 @@
 					<div class="card-body">
 						<h2 class="text-center display-6 mb-4"
 							th:text="${edicion} ? 'Modificar Carrera' : 'Nueva Carrera'"></h2>
-						<form
-							th:action="${edicion} ? @{/carrera/modificar} : @{/carrera/guardar}"
+						<form th:action="${edicion} ? @{/carrera/modificar} : @{/carrera/guardar}"
 							th:object="${carrera}" method="post">
 							<div class="mb-3">
-								<label for="codigo" class="form-label"> <i
-									class="fas fa-hashtag me-1"></i> Código de Carrera
-								</label> <input type="number" class="form-control" id="codigo"
-									th:field="*{codigo}" th:readonly="${edicion}" required
-									pattern="[0-9]{3}" placeholder="Ej: 001">
+								<label for="codigo" class="form-label"> <i class="fas fa-hashtag me-1"></i> Código de
+									Carrera
+								</label> <input type="number" class="form-control" id="codigo" th:field="*{codigo}"
+									th:readonly="${edicion}" required pattern="[0-9]{3}" placeholder="Ej: 001">
 								<div class="invalid-feedback">El código debe tener el
 									formato 000 (tres números).</div>
 							</div>
 							<div class="mb-3">
-								<label for="nombre" class="form-label"> <i
-									class="fas fa-graduation-cap me-1"></i> Nombre de Carrera
-								</label> <input type="text" class="form-control" id="nombre"
-									th:field="*{nombre}" required
-									placeholder="Ej: Ingeniería en Informática">
+								<label for="nombre" class="form-label"> <i class="fas fa-graduation-cap me-1"></i>
+									Nombre de Carrera
+								</label> <input type="text" class="form-control" id="nombre" th:field="*{nombre}"
+									required placeholder="Ej: Ingeniería en Informática">
 								<div class="invalid-feedback">Ingrese un nombre de carrera
 									válido.</div>
 							</div>
 							<div class="mb-3">
-								<label for="duracion" class="form-label"> <i
-									class="fas fa-clock me-1"></i> Duración (años)
+								<label for="duracion" class="form-label"> <i class="fas fa-clock me-1"></i> Duración
+									(años)
 								</label> <input type="number" class="form-control" id="cantidadAnios"
-									th:field="*{cantidadAnios}" min="1" required
-									placeholder="Ej: 5">
+									th:field="*{cantidadAnios}" min="1" required placeholder="Ej: 5">
 								<div class="invalid-feedback">Ingrese una duración válida
 									(número mayor o igual a 1).</div>
 							</div>
 							<div class="mb-3">
-								<label for="estado" class="form-label"> <i
-									class="fas fa-toggle-on me-1"></i> Estado
-								</label> <select class="form-select" id="estado" th:field="*{estado}"
-									required>
+								<label for="estado" class="form-label"> <i class="fas fa-toggle-on me-1"></i> Estado
+								</label> <select class="form-select" id="estado" th:field="*{estado}" required>
 									<option value="">Seleccione o modifique el estado de
 										la carrera</option>
 									<option value="Activo">Activo</option>
@@ -65,11 +61,13 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-3 d-none d-md-block">
+				<aside th:replace="~{/layouts/aside :: publicidad}"></aside>
+			</div>
 		</div>
 	</main>
 	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
 
+</html>
