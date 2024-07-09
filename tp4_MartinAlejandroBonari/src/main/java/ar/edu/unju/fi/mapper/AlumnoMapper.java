@@ -20,12 +20,14 @@ public interface AlumnoMapper {
 	@Mapping(source = "fechaNacimiento", target = "fechaNacimiento", dateFormat = "yyyy-MM-dd")
 	@Mapping(source = "domicilio", target = "domicilio")
 	@Mapping(source = "LU", target = "LU")
-	AlumnoDTO toAlumnoDto(Alumno alumno);
-
+	@Mapping(source = "estado", target = "estado")
+	
+	AlumnoDTO toAlumnoDTO(Alumno alumno);
+	
 	@InheritConfiguration
 	Alumno toAlumno(AlumnoDTO alumnoDTO);
-
-	List<AlumnoDTO> toAlumnoDTOList(List<Alumno> alumnos);
-
-	List<Alumno> toAlumnoList(List<AlumnoDTO> alumnosDTO);
+     
+    List<AlumnoDTO> toAlumnoDTOList(List<Alumno> alumnos);
+    
+    List<Alumno> toAlumnoList(List<AlumnoDTO> alumnosDTO);
 }

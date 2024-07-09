@@ -1,8 +1,11 @@
 package ar.edu.unju.fi.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import ar.edu.unju.fi.model.Alumno;
 
-public interface IAlumnoRepository extends CrudRepository<Alumno, Integer> {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IAlumnoRepository extends JpaRepository<Alumno, Long> {
+	List<Alumno> findByEstado(boolean estado);
 }

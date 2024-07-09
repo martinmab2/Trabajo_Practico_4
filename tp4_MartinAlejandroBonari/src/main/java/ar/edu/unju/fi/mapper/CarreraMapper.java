@@ -16,12 +16,13 @@ public interface CarreraMapper {
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "cantidadAnios", target = "cantidadAnios")
     @Mapping(source = "estado", target = "estado")
-    CarreraDTO toCarreraDto(Carrera carrera);
-
-    @InheritConfiguration
-    Carrera toCarrera(CarreraDTO carreraDTO);
-
-    List<CarreraDTO> toCarreraDTOList(List<Carrera> carreras);
-
-    List<Carrera> toCarreraList(List<CarreraDTO> carrerasDTO);
+    
+    CarreraDTO toCarreraDTO(Carrera carrera);
+	
+	@InheritConfiguration
+	Carrera toCarrera(CarreraDTO carreraDTO);
+	
+	List<CarreraDTO> toCarreraDTOList(List<Carrera> carreras);
+	
+	List<Carrera> ConvertirListaCarreraDTOAListacarrera(List<CarreraDTO>carrerasDTO);
 }
