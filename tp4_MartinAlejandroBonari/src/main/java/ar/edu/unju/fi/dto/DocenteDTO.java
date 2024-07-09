@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DocenteDTO {
+	private Integer id;
 	private String legajo;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String telefono;
+	private boolean estado;
 }

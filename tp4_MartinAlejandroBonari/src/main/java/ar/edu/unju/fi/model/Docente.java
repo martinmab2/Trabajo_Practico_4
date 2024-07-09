@@ -6,20 +6,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Component
 @Entity
+@Table (name = "docentes")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Docente {
     @Id
-    @Column(name = "Docente_leg")
+    @Column(name = "Docente_Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer legajo;
+    private Integer id;
+    @Column(name = "Docente_leg")
+    private String legajo;
 
     @Column(name = "Docente_name")
     private String nombre;
@@ -32,4 +37,10 @@ public class Docente {
 
     @Column(name = "Docente_telef")
     private String telefono;
+    
+    @Column (name = "Docente_estado")
+    private boolean estado;
+    
+    @OneToOne (mappedBy  = "docentes")
+    private Materia materia;
 }
