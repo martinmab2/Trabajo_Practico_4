@@ -17,9 +17,9 @@ public interface DocenteMapper {
 	@Mapping(source = "email", target = "email")
 	@Mapping(source = "telefono", target = "telefono")
 	@Mapping(source = "estado", target = "estado")
-	
 	DocenteDTO ConvertirDocenteADocenteDTO(Docente docente);
 	
+	@Mapping(target = "materia", ignore = true)
 	@InheritConfiguration
 	Docente ConvertirDocenteDTOAdocente(DocenteDTO DocenteDTO);
      

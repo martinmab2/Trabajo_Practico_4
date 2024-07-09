@@ -2,13 +2,17 @@ package ar.edu.unju.fi.services;
 
 import java.util.List;
 
-import ar.edu.unju.fi.model.Materia;
+import ar.edu.unju.fi.dto.MateriaDTO;
 
 public interface IMateriaService {
-	public void añadirMateria(Materia materia);
-
-	public List<Materia> getAllMateria();
-
-	public Materia buscarMateriaPorCodigo(int codigo);
+	public void crearMateria(MateriaDTO materiaDTO);
+	
+	public List<MateriaDTO> listaMateria();
+	
+	public void eliminarMateria(MateriaDTO materiaDTO);
+	
+	public void modificarMateria(MateriaDTO materiaDTO);
+	
+	public MateriaDTO buscarMateria(Integer id);
 	
 }
