@@ -1,26 +1,34 @@
 package ar.edu.unju.fi.model;
 
-import org.springframework.stereotype.Component;
+import java.util.List;
 
+import org.springframework.stereotype.Component;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Component
 @Entity
+@Table(name = "carreras")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Carrera {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "carrera_id")
+	private Long id;
+	
 	@Column(name = "carrera_codigo")
-	private Long codigo;
+	private String codigo;
 
 	@Column(name = "carrera_nombre")
 	private String nombre;
@@ -29,5 +37,8 @@ public class Carrera {
 	private int cantidadAnios;
 
 	@Column(name = "carrera_estado")
-	private String estado;
+	private boolean estado;
+	
+	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	private List<Materia> materias;
 }
