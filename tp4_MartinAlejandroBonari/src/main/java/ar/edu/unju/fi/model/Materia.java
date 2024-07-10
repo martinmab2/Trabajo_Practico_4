@@ -70,7 +70,7 @@ public class Materia {
     @JoinColumn(name = "carrera_id") 
     private Carrera carrera;
     
-    public Materia(int codigo, String nombre, String curso, short cantidadHoras, Modalidad modalidad, boolean estado,
+    public Materia(int codigo, String nombre, String curso, int cantidadHoras, Modalidad modalidad, boolean estado,
 			List<Alumno> alumnos, Docente docente, Carrera carrera) {
 		super();
 		this.codigo = codigo;

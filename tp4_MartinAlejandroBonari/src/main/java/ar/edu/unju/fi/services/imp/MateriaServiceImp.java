@@ -29,6 +29,7 @@ public class MateriaServiceImp implements IMateriaService {
 
 	@Autowired
 	private IMateriaRepository materiaRepository; 
+	
 	@Autowired
 	private MateriaMapper materiaMapper; 
 	
@@ -64,14 +65,31 @@ public class MateriaServiceImp implements IMateriaService {
 
 	@Override
 	public void modificarMateria(MateriaDTO materiaDTO) {
-		Materia materia = materiaMapper.toMateria(materiaDTO);
-		Docente docente = docenteRepository.findById(materia.getDocente().getId()).get();
-		materia.setDocente(docente);
-		Carrera carrera = carreraRepository.findById(materia.getCarrera().getId()).get();
-	    materia.setCarrera(carrera);
-		materia.setEstado(true);
-		materiaRepository.save(materia);
-	    LOGGER.info("Materia modificada con exito");
+	    Materia materia = materiaMapper.toMateria(materiaDTO);
+	    
+	    
+	    Optional<Docente> optionalDocente = docenteRepository.findById(materia.getDocente().getId());
+	    if (optionalDocente.isPresent()) {
+	        materia.setDocente(optionalDocente.get());
+	    } else {
+	        
+	        LOGGER.error("Docente no encontrado con ID: " + materia.getDocente().getId());
+	        return; 
+	    }
+	    
+	    
+	    Optional<Carrera> optionalCarrera = carreraRepository.findById(materia.getCarrera().getId());
+	    if (optionalCarrera.isPresent()) {
+	        materia.setCarrera(optionalCarrera.get());
+	    } else {
+	    
+	        LOGGER.error("Carrera no encontrada con ID: " + materia.getCarrera().getId());
+	        return;
+	    }
+	    
+	    materia.setEstado(true);
+	    materiaRepository.save(materia);
+	    LOGGER.info("Materia modificada con éxito");
 	}
 
 	@Override

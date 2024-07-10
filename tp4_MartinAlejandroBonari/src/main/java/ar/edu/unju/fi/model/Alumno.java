@@ -3,7 +3,6 @@ package ar.edu.unju.fi.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Component;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

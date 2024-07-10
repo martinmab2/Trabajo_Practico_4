@@ -16,11 +16,16 @@
 						<form class="needs-validation"
 							th:action="${edicion} ? @{/materia/modificar} : @{/materia/guardar}" th:object="${materia}"
 							method="post" novalidate>
+							<div class="d-none">
+								<label for="id" class="form-label"> <i class="fas fa-hashtag me-1"></i>
+								</label> <input type="number" class="form-control" id="id" th:field="*{id}"
+									 >
+							</div>
 							<div class="mb-3">
 								<label for="codigo" class="form-label"> <i class="fas fa-hashtag me-1"></i> Código de
 									Materia
 								</label> <input type="number" class="form-control" id="codigo" th:field="*{codigo}"
-									th:readonly="${edicion}" required pattern="[0-9]{3}" placeholder="Ej:101">
+									 required pattern="[0-9]{3}" placeholder="Ej:101">
 								<div class="invalid-feedback">El código debe tener el
 									formato AAA000 (tres letras mayúsculas y tres números).</div>
 							</div>
@@ -61,9 +66,9 @@
 							<div class="mb-3">
 								<label for="docente" class="form-label"> <i class="fas fa-chalkboard-teacher me-1"></i>
 									Docente
-								</label> <select class="form-select" id="docente" th:field="*{docente.legajo}" required>
+								</label> <select class="form-select" id="docente" th:field="*{docente.id}" required>
 									<option value="">Seleccione un docente</option>
-									<option th:each="docente : ${docentes}" th:value="${docente.legajo}"
+									<option th:each="docente : ${docentes}" th:value="${docente.id}"
 										th:text="${docente.apellido} + ', ' + ${docente.nombre}"></option>
 								</select>
 								<div class="invalid-feedback">Seleccione un docente
@@ -71,9 +76,9 @@
 							</div>
 							<div class="mb-3">
 								<label for="carrera" class="form-label"> <i class="fas fa-university me-1"></i> Carrera
-								</label> <select class="form-select" id="carrera" th:field="*{carrera.codigo}" required>
+								</label> <select class="form-select" id="carrera" th:field="*{carrera.id}" required>
 									<option value="">Seleccione una carrera</option>
-									<option th:each="carrera : ${carreras}" th:value="${carrera.codigo}"
+									<option th:each="carrera : ${carreras}" th:value="${carrera.id}"
 										th:text="${carrera.nombre}"></option>
 								</select>
 								<div class="invalid-feedback">Seleccione una carrera

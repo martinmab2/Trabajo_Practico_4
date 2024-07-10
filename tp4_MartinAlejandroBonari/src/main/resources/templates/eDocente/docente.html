@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head data-th-replace="~{/layouts/header :: head}">
-</head>
+<head data-th-replace="~{/layouts/header :: head}"></head>
 
 <body>
 	<header data-th-replace="~{/layouts/header :: header}"></header>
@@ -13,49 +12,62 @@
 					<div class="card-body">
 						<h2 class="text-center display-6 mb-4"
 							th:text="${edicion} ? 'Modificar Docente' : 'Nuevo Docente'"></h2>
-						<form th:action="${edicion} ? @{/docente/modificar} : @{/docente/guardar}"
-							th:object="${docente}" method="post">
-							<div class="mb-3">
-								<label for="legajo" class="form-label">
-									<i class="fas fa-hashtag me-1"></i> Legajo
-								</label>
-								<input type="text" class="form-control" id="legajo" th:field="*{legajo}"
-									th:readonly="${edicion}" required pattern="[0-9]+" placeholder="Ej: 123456">
-								<div class="invalid-feedback">
-									Ingrese un número de legajo válido (solo números).
-								</div>
+						<form class="needs-validation"
+							th:action="${edicion} ? @{/docente/modificar} : @{/docente/guardar}"
+							th:object="${docente}" method="post" novalidate>
+							<div class="mb-3 d-none">
+								<label for="id" class="form-label"> <i
+									class="fas fa-id-card me-1"></i> ID
+								</label> <input type="number" class="form-control" id="id"
+									th:field="*{id}" th:readonly="${edicion}" required
+									pattern="[0-9]{5}">
 							</div>
 							<div class="mb-3">
-								<label for="nombre" class="form-label">
-									<i class="fas fa-user me-1"></i> Nombre
-								</label>
-								<input type="text" class="form-control" id="nombre" th:field="*{nombre}" required
-									placeholder="Ej: Juan">
-								<div class="invalid-feedback">Ingrese un nombre válido.</div>
+								<label for="legajo" class="form-label"> <i
+									class="fas fa-hashtag me-1"></i> Legajo
+								</label> <input type="text" class="form-control" id="legajo"
+									th:field="*{legajo}" required
+									th:classappend="${#fields.hasErrors('legajo')} ? 'is-invalid'" />
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></div>
 							</div>
 							<div class="mb-3">
-								<label for="apellido" class="form-label">
-									<i class="fas fa-user me-1"></i> Apellido
-								</label>
-								<input type="text" class="form-control" id="apellido" th:field="*{apellido}" required
-									placeholder="Ej: Pérez">
-								<div class="invalid-feedback">Ingrese un apellido válido.</div>
+								<label for="nombre" class="form-label"> <i
+									class="fas fa-user me-1"></i> Nombre
+								</label> <input type="text" class="form-control" id="nombre"
+									th:field="*{nombre}" required placeholder="Ej: Juan"
+									th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'">
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('nombre')}">Ingrese un nombre válido.</div>
 							</div>
 							<div class="mb-3">
-								<label for="email" class="form-label">
-									<i class="fas fa-envelope me-1"></i> Email
-								</label>
-								<input type="email" class="form-control" id="email" th:field="*{email}" required
-									placeholder="Ej: juan.perez@example.com">
-								<div class="invalid-feedback">Ingrese un email válido.</div>
+								<label for="apellido" class="form-label"> <i
+									class="fas fa-user me-1"></i> Apellido
+								</label> <input type="text" class="form-control" id="apellido"
+									th:field="*{apellido}" required placeholder="Ej: Pérez"
+									th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid'">
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('apellido')}">Ingrese un apellido válido.</div>
 							</div>
 							<div class="mb-3">
-								<label for="telefono" class="form-label">
-									<i class="fas fa-phone me-1"></i> Teléfono
-								</label>
-								<input type="tel" class="form-control" id="telefono" th:field="*{telefono}" required
-									pattern="[0-9]+" placeholder="Ej: 3884123456">
-								<div class="invalid-feedback">Ingrese un número de teléfono válido (solo números).</div>
+								<label for="email" class="form-label"> <i
+									class="fas fa-envelope me-1"></i> Email
+								</label> <input type="email" class="form-control" id="email"
+									th:field="*{email}" required
+									placeholder="Ej: juan.perez@example.com"
+									th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('email')}">Ingrese un email válido.</div>
+							</div>
+							<div class="mb-3">
+								<label for="telefono" class="form-label"> <i
+									class="fas fa-phone me-1"></i> Teléfono
+								</label> <input type="tel" class="form-control" id="telefono"
+									th:field="*{telefono}" required pattern="[0-9]+"
+									placeholder="Ej: 3884123456"
+									th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid'">
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('telefono')}">Ingrese un número de teléfono válido (solo números).</div>
 							</div>
 							<div class="gap-2 d-flex justify-content-end">
 								<button class="btn btn-primary" type="submit">
@@ -75,7 +87,8 @@
 		</div>
 	</main>
 	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
