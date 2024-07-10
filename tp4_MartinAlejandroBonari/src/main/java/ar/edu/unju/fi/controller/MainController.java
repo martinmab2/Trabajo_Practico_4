@@ -34,4 +34,9 @@ public class MainController {
 	    model.addAttribute("titulo", "Filtrar Alumno");
 	    return "consulta/filtrarAlumno";
 	}
+	@GetMapping("/carrera/consultar")
+	public String getConsultarAlumnoPage(Model model) {
+		model.addAttribute("titulo", "Consulta Alumno");
+		return "consulta/consultarAlumno";
+	}
 }
