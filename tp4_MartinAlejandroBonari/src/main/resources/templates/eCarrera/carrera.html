@@ -26,9 +26,9 @@
 							<div class="mb-3">
 								<label for="codigo" class="form-label"> <i
 									class="fas fa-hashtag me-1"></i> Código de Carrera
-								</label> <input type="number" class="form-control" id="codigo"
+								</label> <input type="text" class="form-control" id="codigo"
 									th:field="*{codigo}" required
-									pattern="[0-9]{3}" placeholder="Ej: 001">
+									pattern="[0-9]{3}" placeholder="Ej: LI01">
 								<div class="invalid-feedback">El código debe tener el
 									formato 000 (tres números).</div>
 							</div>
@@ -62,7 +62,7 @@
 							</div>
 							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 								<button class="btn btn-primary" type="submit">
-									<i class="fas fa-save me-1"></i> Guardar Carrera
+									<i class="fas fa-save me-1"></i> Guardar
 								</button>
 								<a th:href="@{/carrera/listado}" class="btn btn-secondary ms-2">
 									<i class="fas fa-times me-1"></i> Cancelar

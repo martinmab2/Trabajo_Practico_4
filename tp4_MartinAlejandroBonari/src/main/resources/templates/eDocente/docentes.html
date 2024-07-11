@@ -29,12 +29,12 @@
 										<h5 class="card-title text-end text-muted" th:text="${docente.legajo}"></h5>
 										<h5 class="card-title" th:text="${docente.nombre} + ' ' + ${docente.apellido}">
 										</h5>
-										<button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse"
-											th:data-bs-target="'#collapse-' + ${docente.legajo}" aria-expanded="false"
+										<button class="btn btn-dark btn-sm" type="button" data-bs-toggle="collapse"
+											th:data-bs-target="'#collapse-' + ${docente.id}" aria-expanded="false"
 											aria-controls="collapseExample">
 											Ver más
 										</button>
-										<div class="collapse mt-2" th:id="'collapse-' + ${docente.legajo}">
+										<div class="collapse mt-2" th:id="'collapse-' + ${docente.id}">
 											<div class="card card-body">
 												<ul class="list-group list-group-flush">
 													<li class="list-group-item"><strong>Email:</strong> <span
@@ -43,15 +43,17 @@
 															th:text="${docente.telefono}"></span></li>
 												</ul>
 											</div>
+											<div class="mt-2">
+												<a th:href="@{/docente/modificar/{id}(id=${docente.id})}"
+													class="btn btn-outline-primary btn-sm me-2"> <i
+														class="fas fa-edit"></i>
+												</a>
+												<a th:href="@{/docente/eliminar/{id}(id=${docente.id})}"
+													class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i>
+												</a>
+											</div>
 										</div>
-										<div class="mt-2">
-											<a th:href="@{/docente/modificar/{id}(id=${docente.id})}"
-												class="btn btn-outline-primary btn-sm me-2"> <i class="fas fa-edit"></i>
-											</a>
-											<a th:href="@{/docente/eliminar/{id}(id=${docente.id})}"
-												class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i>
-											</a>
-										</div>
+
 									</div>
 								</div>
 							</div>
@@ -61,6 +63,7 @@
 			</div>
 			<div class="col-md-3 d-none d-md-block">
 				<aside th:replace="~{/layouts/aside :: publicidad}"></aside>
+				<aside th:replace="~{/layouts/aside :: publicidad2}"></aside>
 			</div>
 		</div>
 	</main>

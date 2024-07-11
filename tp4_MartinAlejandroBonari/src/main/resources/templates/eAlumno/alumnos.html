@@ -17,7 +17,7 @@
 							<a data-th-href="@{/alumno/nuevo}" class="btn btn-primary me-2">
 								<i class="fas fa-plus me-2"></i> Agregar alumno
 							</a>
-							<a data-th-href="@{/alumno/filtrar}" class="btn btn-secondary">
+							<a data-th-href="@{/alumno/filtrar}" class="btn btn-dark">
 								<i class="fas fa-filter me-2"></i> Filtrar alumno
 							</a>
 						</div>
@@ -30,37 +30,42 @@
 										</div>
 										<h5 class="card-title text-end text-muted" th:text="${alumno.LU}"></h5>
 										<h5 class="card-title" th:text="${alumno.apellido + ', ' + alumno.nombre}"></h5>
-										<button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse"
-											th:data-bs-target="'#collapse-' + ${alumno.LU}" aria-expanded="false"
+										<p class="list-group-item">
+											<strong>DNI:</strong>
+											<span th:text="${alumno.dni}"></span>
+										</p>
+
+										<button class="btn btn-dark btn-sm" type="button" data-bs-toggle="collapse"
+											th:data-bs-target="'#collapse-' + ${alumno.id}" aria-expanded="false"
 											aria-controls="collapseExample">
 											Ver más
 										</button>
-										<div class="collapse mt-2" th:id="'collapse-' + ${alumno.LU}">
+										<div class="collapse mt-2" th:id="'collapse-' + ${alumno.id}">
 											<div class="card card-body">
 												<ul class="list-group list-group-flush">
-													<li class="list-group-item"><strong>DNI:</strong> <span
-															th:text="${alumno.dni}"></span></li>
 													<li class="list-group-item"><strong>Email:</strong> <span
 															th:text="${alumno.email}"></span></li>
 													<li class="list-group-item"><strong>Teléfono:</strong> <span
 															th:text="${alumno.telefono}"></span></li>
 													<li class="list-group-item"><strong>Fecha de Nacimiento:</strong>
-														<span th:text="${alumno.fechaNacimiento}"></span></li>
+														<span th:text="${alumno.fechaNacimiento}"></span>
+													</li>
 													<li class="list-group-item"><strong>Domicilio:</strong> <span
 															th:text="${alumno.domicilio}"></span></li>
 												</ul>
 											</div>
+											<div class="mt-2">
+												<a th:href="@{/alumno/modificar/{id}(id=${alumno.id})}"
+													class="btn btn-outline-primary btn-sm me-2">
+													<i class="fas fa-edit"></i>
+												</a>
+												<a th:href="@{/alumno/eliminar/{id}(id=${alumno.id})}"
+													class="btn btn-danger btn-sm">
+													<i class="fas fa-trash"></i>
+												</a>
+											</div>
 										</div>
-										<div class="mt-2">
-											<a th:href="@{/alumno/modificar/{id}(id=${alumno.id})}"
-												class="btn btn-outline-primary btn-sm me-2">
-												<i class="fas fa-edit"></i>
-											</a>
-											<a th:href="@{/alumno/eliminar/{id}(id=${alumno.id})}"
-												class="btn btn-danger btn-sm">
-												<i class="fas fa-trash"></i>
-											</a>
-										</div>
+
 									</div>
 								</div>
 							</div>
@@ -70,6 +75,7 @@
 			</div>
 			<div class="col-md-3 d-none d-md-block">
 				<aside th:replace="~{/layouts/aside :: publicidad}"></aside>
+				<aside th:replace="~{/layouts/aside :: publicidad2}"></aside>
 			</div>
 		</div>
 	</main>

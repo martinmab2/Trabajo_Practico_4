@@ -23,32 +23,11 @@
 										th:text="${a.nombre} + ' ' + ${a.apellido}"></option>
 								</select>
 							</div>
-
-							<div class="mb-3">
-								<label for="carrera" class="form-label"> <i class="fas fa-graduation-cap me-1"></i>
-									Carrera</label>
-								<select class="form-select" id="carrera" name="carrera" aria-label="Seleccionar Carrera"
-									required>
-									<option selected disabled>Selecciona una carrera</option>
-									<option th:each="c : ${carreras}" th:value="${c.id}" th:text="${c.nombre}"></option>
-								</select>
-							</div>
-
-							<div class="mb-3">
-								<label for="materia" class="form-label"> <i class="fas fa-book me-1"></i>
-									Materia</label>
-								<select class="form-select" id="materia" name="materia" aria-label="Seleccionar Materia"
-									required>
-									<option selected disabled>Selecciona una materia</option>
-									<option th:each="m : ${materias}" th:value="${m.id}" th:text="${m.nombre}"></option>
-								</select>
-							</div>
-
-							<div class="d-grid gap-2">
+							<div class=" gap-2 d-flex justify-content-end">
 								<button class="btn btn-primary" type="submit">
 									<i class="fas fa-clipboard-check me-1"></i> Inscribir
 								</button>
-								<a th:href="@{/carrera/listado}" class="btn btn-secondary ms-2">
+								<a th:href="@{/materia/listado}" class="btn btn-secondary ms-2">
 									<i class="fas fa-times me-1"></i> Cancelar
 								</a>
 							</div>
@@ -57,7 +36,7 @@
 				</div>
 			</div>
 			<div class="col-md-3 d-none d-md-block">
-				<aside th:replace="~{/layouts/aside :: publicidad}"></aside>
+				<aside th:replace="~{/layouts/aside :: publicidad2}"></aside>
 			</div>
 		</div>
 	</main>

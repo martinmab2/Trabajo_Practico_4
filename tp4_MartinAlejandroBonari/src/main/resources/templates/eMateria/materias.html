@@ -27,14 +27,19 @@
 										<div class="text-end">
 											<i class="fa-solid fa-book fa-2x text-primary"></i>
 										</div>
-										<h5 class="card-title text-end text-muted" th:text="'COD: ' + ${materia.codigo}"></h5>
+										<h5 class="card-title text-end text-muted"
+											th:text="'COD: ' + ${materia.codigo}"></h5>
 										<h5 class="card-title" th:text="${materia.nombre}"></h5>
-										<button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse"
-											th:data-bs-target="'#collapse-' + ${materia.codigo}" aria-expanded="false"
+										<p>
+											<strong>Carrera:</strong>
+											<span th:text="${materia.carrera.nombre}"></span>
+										</p>
+										<button class="btn btn-dark btn-sm" type="button" data-bs-toggle="collapse"
+											th:data-bs-target="'#collapse-' + ${materia.id}" aria-expanded="false"
 											aria-controls="collapseExample">
 											Ver más
 										</button>
-										<div class="collapse mt-2" th:id="'collapse-' + ${materia.codigo}">
+										<div class="collapse mt-2" th:id="'collapse-' + ${materia.id}">
 											<div class="card card-body">
 												<ul class="list-group list-group-flush">
 													<li class="list-group-item"><strong>Año de Cursado:</strong> <span
@@ -49,22 +54,27 @@
 														<span
 															th:text="${materia.docente.apellido} + ', ' + ${materia.docente.nombre}"></span>
 													</li>
-													<li class="list-group-item"><strong>Carrera:</strong>
-														<span th:text="${materia.carrera.nombre}"></span>
-													</li>
 												</ul>
 											</div>
+											<div class="mt-2 d-flex justify-content-between">
+												<div>
+													<a th:href="@{/materia/modificar/{id}(id=${materia.id})}"
+														class="btn btn-outline-primary btn-sm me-2">
+														<i class="fas fa-edit"></i>
+													</a>
+													<a th:href="@{/materia/eliminar/{id}(id=${materia.id})}"
+														class="btn btn-danger btn-sm">
+														<i class="fas fa-trash"></i>
+													</a>
+												</div>
+												<div>
+													<a th:href="@{/materia/inscribirse/{id}(id=${materia.id})}"
+														class="btn btn-warning btn-sm"> Inscribir Alumno
+													</a>
+												</div>
+											</div>
 										</div>
-										<div class="mt-2">
-											<a th:href="@{/materia/modificar/{id}(id=${materia.id})}"
-												class="btn btn-outline-primary btn-sm me-2">
-												<i class="fas fa-edit"></i>
-											</a>
-											<a th:href="@{/materia/eliminar/{id}(id=${materia.id})}"
-												class="btn btn-danger btn-sm">
-												<i class="fas fa-trash"></i>
-											</a>
-										</div>
+
 									</div>
 								</div>
 							</div>
@@ -74,6 +84,7 @@
 			</div>
 			<div class="col-md-3 d-none d-md-block">
 				<aside th:replace="~{/layouts/aside :: publicidad}"></aside>
+				<aside th:replace="~{/layouts/aside :: publicidad2}"></aside>
 			</div>
 		</div>
 	</main>

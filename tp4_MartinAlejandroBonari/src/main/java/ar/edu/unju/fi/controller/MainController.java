@@ -39,4 +39,9 @@ public class MainController {
 		model.addAttribute("titulo", "Consulta Alumno");
 		return "consulta/consultarAlumno";
 	}
+	@GetMapping("/materia/inscribirse/{id}")
+	public String getInscribirAlumnoPage(Model model) {
+		model.addAttribute("titulo", "Inscribir Alumno");
+		return "consulta/inscripcionMateria";
+	}
 }
