@@ -42,11 +42,12 @@ public class CarreraController {
 		ModelAndView modelView;
 		if (result.hasErrors()) {
 			modelView = new ModelAndView("eCarrera/carrera");
+			modelView.addObject("carrera", carreraDTO);
+			modelView.addObject("edicion", false);
 		} else {
 			carreraDTO.setEstado(true); // Suponiendo que aquí se establece el estado
 			carreraService.añadirCarrera(carreraDTO);
 			modelView = new ModelAndView("redirect:/carrera/listado");
-			modelView.addObject("carreras", carreraService.getAllCarreras());
 		}
 		return modelView;
 	}
@@ -65,14 +66,23 @@ public class CarreraController {
 	}
 
 	@PostMapping("/modificar")
-	public String modificarCarrera(@ModelAttribute("carrera") CarreraDTO carreraDTO) {
-		carreraService.modificarCarrera(carreraDTO);
-		return "redirect:/carrera/listado";
+	public ModelAndView modificarCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO,
+			BindingResult result) {
+		ModelAndView modelView;
+		if (result.hasErrors()) {
+			modelView = new ModelAndView("eCarrera/carrera");
+			modelView.addObject("carrera", carreraDTO);
+			modelView.addObject("edicion", true);
+		} else {
+			carreraService.modificarCarrera(carreraDTO);
+			modelView = new ModelAndView("redirect:/carrera/listado");
+		}
+		return modelView;
 	}
 
 	@GetMapping("/eliminar/{id}")
-    public String eliminarCarrera(@PathVariable("id") Long id) {
-        carreraService.deleteCarrera(id);
-        return "redirect:/carrera/listado";
+	public String eliminarCarrera(@PathVariable("id") Long id) {
+		carreraService.deleteCarrera(id);
+		return "redirect:/carrera/listado";
 	}
 }

@@ -18,16 +18,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Component
 public class CarreraDTO {
-	private Long id;
-	@NotNull(message="El codigo no puede estar vacio")
+    private Long id;
+
+    @NotNull(message="El codigo no puede estar vacio")
     private String codigo;
-	@NotBlank(message="El nombre no puede estar vacio")
-	@Size(min=5,max=20,message="el nombre debe tener entre 5 y 20 caracteres")
+
+    @NotBlank(message="El nombre no puede estar vacio")
+    @Size(min=5,max=20,message="el nombre debe tener entre 5 y 20 caracteres")
     private String nombre;
-	@NotNull(message="La duracion no puede estar vacia")
-	@Min(value=3, message="La duracion minima es de 3 años")
+
+    @NotNull(message="La duracion no puede estar vacia")
+    @Min(value=3, message="La duracion minima es de 3 años")
     @Max(value=5, message="La duracion maxima es de 6 años")
     private int cantidadAnios;
+
     private boolean estado;
+
     private List<Materia> materias;
 }
