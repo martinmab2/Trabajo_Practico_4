@@ -1,13 +1,13 @@
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('INF', 'Ingeniería Informática', 5, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LCA', 'Licenciatura en Administración', 4, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LCP', 'Licenciatura en Programacion', 4, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LCS', 'Licenciatura en Sistemas', 4, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LTA', 'Licenciatura en Tecnologia de los Alimentos', 4, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LCG', 'Licenciatura en Ciencias Geologicas', 4, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LMI', 'Ingenieria en Minas', 5, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('IID', 'Ingenieria Industrial', 5, b'1');
-INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('TUP', 'Tecnicatura Universitaria en Perforaciones', 4, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('IIF', 'Ingeniería Informática', 5, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('IQ', 'Ingeniería Química', 5, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('II', 'Ingeniería Industrial', 5, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('IM', 'Ingeniería de Minas', 5, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LCG', 'Licenciatura en Ciencias Geológicas', 4, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LTAL', 'Licenciatura en Tecnología de los Alimentos', 4, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('LS', 'Licenciatura en Sistemas', 4, b'1');
 INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('APU', 'Analista Programador Universitario', 3, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('TUDIV', 'Técnicatura Universitaria en Diseño Integral de Videojuegos', 3, b'1');
+INSERT INTO carreras (carrera_codigo, carrera_nombre, carrera_duracion, carrera_estado) VALUES ('TUPERF', 'Técnicatura Universitaria en Perforaciones', 3, b'1');
 
 INSERT INTO alumnos (alumno_dni, alumno_nombre, alumno_apellido, alumno_email, alumno_telef, alumno_fechnac, alumno_dom, alumno_LU, alumno_estado) VALUES ('44477373','Juan','Pérez','juan@example.com','1234567890','1990-05-15','Calle 123','ALU123',b'1');
 INSERT INTO alumnos (alumno_dni, alumno_nombre, alumno_apellido, alumno_email, alumno_telef, alumno_fechnac, alumno_dom, alumno_LU, alumno_estado) VALUES ('29456744','Fabricio','Gómez','maria@example.com','0987654321','1992-08-25','Avenida 456','ALU456',b'1');
@@ -20,5 +20,25 @@ INSERT INTO alumnos (alumno_dni, alumno_nombre, alumno_apellido, alumno_email, a
 
 INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D123', 'Pedro', 'González', 'pedro@example.com', '5678901234', b'1');
 INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D456', 'Ana', 'Martínez', 'ana@example.com', '4321098765', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D222', 'Pedro', 'González', 'pedro@example.com', '5678901234', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D333', 'Virgilio', 'De Roil', 'virgilio@example.com', '4321098765', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D555', 'Javier', 'Altamirano', 'javier@example.com', '5678901234', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D651', 'Ana', 'Martínez', 'ana@example.com', '4321098765', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D567', 'Nicolas', 'Cruz', 'nicolas@example.com', '5678901234', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D678', 'Robledo', 'Saucedo', 'robledo@example.com', '4321098765', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D789', 'Brian', 'Peña', 'brian@example.com', '5678901234', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D890', 'Fabricio Alfredo', 'Flores', 'fabricio@example.com', '4321098765', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D901', 'Bruno', 'Bigotes', 'bruno@example.com', '5678901234', b'1');
+INSERT INTO docente (Docente_leg, Docente_name, Docente_surn, Docente_email, Docente_telef, Docente_estado) VALUES ('D012', 'Ramiro', 'Ibañez', 'ramiro@example.com', '4321098765', b'1');
 
-INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('123', 'Programación Avanzada', '202', 80, 'PRESENCIAL', b'1', 1, 2);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('101', 'Introducción a la Programación', '3', 60, 'PRESENCIAL', b'1', 11, 2);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('102', 'Estructuras de Datos', '1', 80, 'PRESENCIAL', b'1', 10, 1);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('101', 'Introducción a la Programación', '3', 60, 'PRESENCIAL', b'1', 1, 2);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('102', 'Estructuras de Datos', '1', 80, 'PRESENCIAL', b'1', 2, 1);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('103', 'Bases de Datos', '3', 60, 'PRESENCIAL', b'1', 3, 3);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('104', 'Programación Avanzada', '2', 70, 'PRESENCIAL', b'1', 4, 4);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('105', 'Inteligencia Artificial', '4', 60, 'PRESENCIAL', b'1', 5, 2);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('106', 'Redes de Computadoras', '2', 80, 'PRESENCIAL', b'1', 6, 1);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('107', 'Sistemas Operativos', '3', 70, 'PRESENCIAL', b'1', 7, 3);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('108', 'Diseño de Software', '4', 60, 'PRESENCIAL', b'1', 8, 4);
+INSERT INTO materias (Mat_cod, Mat_nom, Mat_cur, Mat_hor, Mat_modal, Mat_estado, Docente_id, carrera_id) VALUES ('109', 'Desarrollo Web', '1', 80, 'PRESENCIAL', b'1', 9, 2);
