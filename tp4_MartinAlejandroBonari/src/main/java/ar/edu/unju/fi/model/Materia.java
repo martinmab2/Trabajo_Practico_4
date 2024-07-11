@@ -31,46 +31,44 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Materia {
-	
-    @Id
-    @Column(name = "Mat_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
-    @Column(name = "Mat_cod", nullable = false)
-    private int codigo;
 
-    @Column(name = "Mat_nom", nullable = false)
-    private String nombre;
+	@Id
+	@Column(name = "Mat_id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Column(name = "Mat_cur", nullable = false)
-    private String curso;
+	@Column(name = "Mat_cod", nullable = false)
+	private int codigo;
 
-    @Column(name = "Mat_hor", nullable = false)
-    private int cantidadHoras;
+	@Column(name = "Mat_nom", nullable = false)
+	private String nombre;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "Mat_modal", nullable = false)
-    private Modalidad modalidad;
-    
-    @Column(name = "Mat_estado", nullable = false)
+	@Column(name = "Mat_cur", nullable = false)
+	private String curso;
+
+	@Column(name = "Mat_hor", nullable = false)
+	private int cantidadHoras;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "Mat_modal", nullable = false)
+	private Modalidad modalidad;
+
+	@Column(name = "Mat_estado", nullable = false)
 	private boolean estado;
 
-    @ManyToMany
-	@JoinTable(name = "materias_alumnos",
-	joinColumns = @JoinColumn(name = "Mat_id"),
-	inverseJoinColumns = @JoinColumn(name = "alumno_id"))
-    private List<Alumno> alumnos = new ArrayList<Alumno>();
+	@ManyToMany
+	@JoinTable(name = "materias_alumnos", joinColumns = @JoinColumn(name = "Mat_id"), inverseJoinColumns = @JoinColumn(name = "alumno_id"))
+	private List<Alumno> alumnos = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "Docente_id")
 	private Docente docente;
-     
-    @ManyToOne
-    @JoinColumn(name = "carrera_id") 
-    private Carrera carrera;
-    
-    public Materia(int codigo, String nombre, String curso, int cantidadHoras, Modalidad modalidad, boolean estado,
+
+	@ManyToOne
+	@JoinColumn(name = "carrera_id")
+	private Carrera carrera;
+
+	public Materia(int codigo, String nombre, String curso, int cantidadHoras, Modalidad modalidad, boolean estado,
 			List<Alumno> alumnos, Docente docente, Carrera carrera) {
 		super();
 		this.codigo = codigo;

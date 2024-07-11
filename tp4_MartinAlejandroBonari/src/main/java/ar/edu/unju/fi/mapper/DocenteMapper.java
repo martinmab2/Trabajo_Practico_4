@@ -19,7 +19,6 @@ public interface DocenteMapper {
 	@Mapping(source = "estado", target = "estado")
 	DocenteDTO ConvertirDocenteADocenteDTO(Docente docente);
 	
-	@Mapping(target = "materia", ignore = true)
 	@InheritConfiguration
 	Docente ConvertirDocenteDTOAdocente(DocenteDTO DocenteDTO);
      
