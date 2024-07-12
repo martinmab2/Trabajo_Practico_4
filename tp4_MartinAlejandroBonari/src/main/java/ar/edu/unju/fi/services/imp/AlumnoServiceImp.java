@@ -60,23 +60,27 @@ public class AlumnoServiceImp implements IAlumnoService {
 		LOGGER.info("Alumno eliminado con exito");
 	}
 
-	@Override
-	public void modificarAlumno(AlumnoDTO alumnodto) {
-		Alumno alumno = alumnoMap.toAlumno(alumnodto);
-		
-		 Optional<Carrera> optionalCarrera = carreraRepository.findById(alumno.getCarrera().getId());
-		    if (optionalCarrera.isPresent()) {
-		        alumno.setCarrera(optionalCarrera.get());
-		    } else {
-		    
-		        LOGGER.error("Carrera no encontrada con ID: " + alumno.getCarrera().getId());
-		        return;
-		    }
-		alumno.setEstado(true);
-		alumnoRepository.save(alumno);
-		LOGGER.info("Alumno modificado con exito");
-		
-	}
+    @Override
+    public void modificarAlumno(AlumnoDTO alumnoDTO) {
+        Alumno alumno = alumnoMap.toAlumno(alumnoDTO);
+
+        if (alumno.getCarrera() != null && alumno.getCarrera().getId() != null) {
+            Optional<Carrera> optionalCarrera = carreraRepository.findById(alumno.getCarrera().getId());
+            if (optionalCarrera.isPresent()) {
+                alumno.setCarrera(optionalCarrera.get());
+            } else {
+                LOGGER.error("Carrera no encontrada con ID: " + alumno.getCarrera().getId());
+                return;
+            }
+        } else {
+            LOGGER.error("El alumno no tiene una carrera asignada o el ID de la carrera es nulo.");
+            return;
+        }
+
+        alumno.setEstado(true);
+        alumnoRepository.save(alumno);
+        LOGGER.info("Alumno modificado con éxito");
+    }
 
 	@Override
 	public AlumnoDTO buscarAlumno(Long id) {
