@@ -9,7 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -50,9 +52,14 @@ public class Alumno {
     @Column(name="alumno_LU")
     private String LU;
     
+    @ManyToOne
+	@JoinColumn(name = "carrera_id")
+	private Carrera carrera;
+    
     @Column(name = "alumno_estado")
     private boolean estado;
     
     @ManyToMany(mappedBy = "alumnos")
     private List<Materia> materias = new ArrayList<Materia>();
+       
 }

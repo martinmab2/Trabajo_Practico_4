@@ -7,9 +7,9 @@ import ar.edu.unju.fi.dto.MateriaDTO;
 public interface IMateriaService {
 	public void crearMateria(MateriaDTO materiaDTO);
 	
-	public List<MateriaDTO> listaMateria();
+	public List<MateriaDTO> getAllMaterias();
 	
-	public void eliminarMateria(MateriaDTO materiaDTO);
+	public void deleteMateria(MateriaDTO materiaDTO);
 	
 	public void modificarMateria(MateriaDTO materiaDTO);
 	

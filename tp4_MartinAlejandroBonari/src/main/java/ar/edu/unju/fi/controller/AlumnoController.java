@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.dto.AlumnoDTO;
 import ar.edu.unju.fi.services.IAlumnoService;
+import ar.edu.unju.fi.services.ICarreraService;
 import jakarta.validation.Valid;
 
 
@@ -21,6 +22,9 @@ public class AlumnoController {
 
     @Autowired
     private IAlumnoService alumnoService;
+    
+    @Autowired
+    private ICarreraService carreraService;
 
     @GetMapping("/listado")
     public String getListaAlumnosPage(Model model) {
@@ -34,6 +38,7 @@ public class AlumnoController {
         model.addAttribute("alumno", new AlumnoDTO());
         model.addAttribute("edicion", false);
         model.addAttribute("titulo", "Nuevo Alumno");
+        model.addAttribute("carreras", carreraService.getAllCarreras());
         return "eAlumno/alumno";
     }
 

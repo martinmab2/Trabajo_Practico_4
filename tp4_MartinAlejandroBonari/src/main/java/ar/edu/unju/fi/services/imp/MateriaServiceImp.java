@@ -47,14 +47,14 @@ public class MateriaServiceImp implements IMateriaService {
 	}
 
 	@Override
-	public List<MateriaDTO> listaMateria() {
+	public List<MateriaDTO> getAllMaterias() {
 		List<MateriaDTO> materiasDTO = materiaMapper.toMateriaDTOList(materiaRepository.findByEstado(true));
 		LOGGER.info("Lista de materias");
 		return materiasDTO;
 	}
 
 	@Override
-	public void eliminarMateria(MateriaDTO materiaDTO) {
+	public void deleteMateria(MateriaDTO materiaDTO) {
 		Materia materia =  materiaMapper.toMateria(materiaDTO);
 		materia.setEstado(false);
 		materia.setDocente(null);

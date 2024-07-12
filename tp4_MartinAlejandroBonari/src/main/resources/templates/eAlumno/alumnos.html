@@ -34,6 +34,10 @@
 											<strong>DNI:</strong>
 											<span th:text="${alumno.dni}"></span>
 										</p>
+										<p>
+											<strong>Carrera:</strong>
+											<span th:text="${alumno.carrera.nombre}"></span>
+										</p>
 
 										<button class="btn btn-dark btn-sm" type="button" data-bs-toggle="collapse"
 											th:data-bs-target="'#collapse-' + ${alumno.id}" aria-expanded="false"

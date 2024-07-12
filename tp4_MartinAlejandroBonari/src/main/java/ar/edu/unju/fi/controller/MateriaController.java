@@ -36,7 +36,7 @@ public class MateriaController {
     @GetMapping("/listado")
     public String getListaMateriasPage(Model model) {
         model.addAttribute("titulo", "Materias");
-        model.addAttribute("materias", materiaService.listaMateria());
+        model.addAttribute("materias", materiaService.getAllMaterias());
         return "/eMateria/materias";
     }
 
@@ -60,7 +60,7 @@ public class MateriaController {
         }
         materiaService.crearMateria(materiaDTO);
         ModelAndView modelView = new ModelAndView("redirect:/materia/listado");
-        modelView.addObject("materias", materiaService.listaMateria());
+        modelView.addObject("materias", materiaService.getAllMaterias());
         return modelView;
     }
 
@@ -83,7 +83,7 @@ public class MateriaController {
     @GetMapping("/eliminar/{id}")
     public String eliminarMateria(@PathVariable("id") Integer id) {
         MateriaDTO materiafindDTO = materiaService.buscarMateria(id);
-        materiaService.eliminarMateria(materiafindDTO);
+        materiaService.deleteMateria(materiafindDTO);
         return "redirect:/materia/listado";
     }
 }

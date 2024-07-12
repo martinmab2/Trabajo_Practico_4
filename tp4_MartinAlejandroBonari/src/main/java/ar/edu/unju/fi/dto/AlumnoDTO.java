@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ar.edu.unju.fi.model.Materia;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -43,6 +44,8 @@ public class AlumnoDTO {
 	@NotBlank(message = "El LU no puede ser nulo")
 	@Size(min = 1, max = 20, message = "El LU debe tener entre 1 y 20 caracteres")
 	private String LU;
+	@NotNull(message="El campo carrera no tiene que ser nula")
+	private CarreraDTO carrera;
 	private boolean estado;
 	private List<Materia> materias;
 
