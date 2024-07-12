@@ -15,37 +15,37 @@ import ar.edu.unju.fi.dto.MateriaDTO;
 import ar.edu.unju.fi.mapper.AlumnoMapper;
 import ar.edu.unju.fi.services.IMateriaService;
 
-
-
 @Controller
 @RequestMapping("/alumno")
 public class ConsultaAlumnoMateriaController {
-	
-	@Autowired
-	private IMateriaService materiaService;
-	
-	@Autowired
-	private AlumnoMapper alumnoMapper;
-	
 
-	@GetMapping("/filtrar")
-	public String mostrarFiltro(Model model) {
-	    List<MateriaDTO> materias = materiaService.getAllMaterias();
-	    model.addAttribute("titulo", "Filtrado de Alumnos");
-	    model.addAttribute("materias", materias);
-	    return "consulta/filtrarAlumno";
-	}
+    @Autowired
+    private IMateriaService materiaService;
 
-	@PostMapping("/filtrar")
-	public String filtrarAlumnos(@RequestParam("materiaId") Integer materiaId, Model model) {
-	    MateriaDTO materia = materiaService.buscarMateria(materiaId);
-	    List<AlumnoDTO> alumnos = null;
-	    if (materia != null) {
-	        alumnos = alumnoMapper.toAlumnoDTOList(materia.getAlumnos());
-	    }
-	    List<MateriaDTO> materias = materiaService.getAllMaterias();
-	    model.addAttribute("materias", materias);
-	    model.addAttribute("alumnos", alumnos);
-	    return "consulta/filtrarAlumno";
-	}
+    @Autowired
+    private AlumnoMapper alumnoMapper;
+
+    @GetMapping("/filtrar")
+    public String mostrarFiltro(Model model) {
+        List<MateriaDTO> materias = materiaService.getAllMaterias();
+        model.addAttribute("titulo", "Filtrado de Alumnos");
+        model.addAttribute("materias", materias);
+        return "consulta/filtrarAlumno";
+    }
+
+    @PostMapping("/filtrar")
+    public String filtrarAlumnos(@RequestParam("materiaId") Integer materiaId, Model model) {
+        MateriaDTO materia = materiaService.buscarMateria(materiaId);
+        List<AlumnoDTO> alumnos = null;
+        if (materia != null) {
+            alumnos = alumnoMapper.toAlumnoDTOList(materia.getAlumnos());
+        }
+        List<MateriaDTO> materias = materiaService.getAllMaterias();
+        model.addAttribute("materias", materias);
+        model.addAttribute("alumnos", alumnos);
+        return "consulta/filtrarAlumno";
+    }
 }
+
+
+
