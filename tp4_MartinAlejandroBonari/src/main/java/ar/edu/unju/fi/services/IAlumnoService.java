@@ -4,6 +4,8 @@ import java.util.List;
 
 import ar.edu.unju.fi.dto.AlumnoDTO;
 import ar.edu.unju.fi.dto.MateriaDTO;
+import ar.edu.unju.fi.model.Alumno;
+
 
 public interface IAlumnoService {
 	public void crearAlumno(AlumnoDTO alumnodto);
@@ -17,4 +19,7 @@ public interface IAlumnoService {
     public AlumnoDTO buscarAlumno(Long id);
 
     List<AlumnoDTO> getAlumnosByMateria(MateriaDTO materiaDTO);
+    
+    List<Alumno> obtenerAlumnosPorCarrera(Long carreraId);
+    
 }

@@ -41,7 +41,7 @@
 												<p class="card-text" th:text="'Estado: ' + (${carrera.estado} ? 'Activo' : 'Inactivo')"></p>
 
 												<p class="card-text">
-													<a th:href="@{/carrera/consultar}">
+													<a th:href="@{/carrera/consultar/{carreraId}(carreraId=${carrera.id})}">
 														Consultar Alumnos Inscriptos
 													</a>
 												</p>
