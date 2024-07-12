@@ -54,7 +54,7 @@ public class MateriaServiceImp implements IMateriaService {
 	}
 
 	@Override
-	public void deleteMateria(MateriaDTO materiaDTO) {
+	public void eliminarMateria(MateriaDTO materiaDTO) {
 		Materia materia =  materiaMapper.toMateria(materiaDTO);
 		materia.setEstado(false);
 		materia.setDocente(null);
@@ -105,4 +105,11 @@ public class MateriaServiceImp implements IMateriaService {
 			return null;
 		}
 	}
+
+	@Override
+	public List<Materia> listarTodasLasMaterias() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

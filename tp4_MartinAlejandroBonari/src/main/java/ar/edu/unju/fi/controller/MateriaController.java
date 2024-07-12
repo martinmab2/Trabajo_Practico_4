@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.MateriaDTO;
+
 import ar.edu.unju.fi.services.ICarreraService;
 import ar.edu.unju.fi.services.IDocenteService;
 import ar.edu.unju.fi.services.IMateriaService;
@@ -26,7 +27,7 @@ public class MateriaController {
 
     @Autowired
     private IMateriaService materiaService;
-
+	
     @Autowired
     private ICarreraService carreraService;
 
@@ -69,21 +70,25 @@ public class MateriaController {
         MateriaDTO materia = materiaService.buscarMateria(id);
         model.addAttribute("materia", materia);
         model.addAttribute("edicion", true);
+        model.addAttribute("titulo", "Modificar Materia");
         model.addAttribute("docentes", docenteService.mostrarDocentesNoAsignados());
         model.addAttribute("carreras", carreraService.getAllCarreras());
         return "/eMateria/materia";
     }
 
     @PostMapping("/modificar")
-    public String modificarMateria(@ModelAttribute("materia") MateriaDTO materiaDTO) {
-        materiaService.modificarMateria(materiaDTO);
-        return "redirect:/materia/listado";
+    public String modificarMateria(@Valid @ModelAttribute("materia") MateriaDTO materiaDTO, BindingResult result) {
+        if (result.hasErrors()) {
+            return "eMateria/materia";
+        } else {
+            materiaService.modificarMateria(materiaDTO);
+            return "redirect:/materia/listado";
+        }
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminarMateria(@PathVariable("id") Integer id) {
-        MateriaDTO materiafindDTO = materiaService.buscarMateria(id);
-        materiaService.deleteMateria(materiafindDTO);
+        materiaService.eliminarMateria(materiaDTO);
         return "redirect:/materia/listado";
     }
 }

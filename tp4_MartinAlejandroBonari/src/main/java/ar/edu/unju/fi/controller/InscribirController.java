@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,53 +20,54 @@ import ar.edu.unju.fi.services.IAlumnoService;
 import ar.edu.unju.fi.services.IMateriaService;
 
 @Controller
-@RequestMapping("/form")
 public class InscribirController {
-	@Autowired
-	private MateriaMapper materiaMapper;
 
-	@Autowired
-	private IMateriaService materiaService;
+    @Autowired
+    private MateriaMapper materiaMapper;
 
-	@Autowired
-	private AlumnoMapper alumnoMapper;
+    @Autowired
+    private IMateriaService materiaService;
 
-	@Autowired
-	private IAlumnoService alumnoService;
+    @Autowired
+    private AlumnoMapper alumnoMapper;
 
-	@GetMapping("/inscribir")
-	public String getFormularioInscripcionAlumno(Model model) {
-		List<MateriaDTO> materias = materiaService.getAllMaterias();
-		List<AlumnoDTO> alumnos = alumnoService.getAllALumnos();
-		model.addAttribute("titulo", "Inscripcion Alumno");
-		model.addAttribute("alumnos", alumnos);
-		model.addAttribute("materias", materias);
-		return "consulta/inscripcionMateria";
-	}
+    @Autowired
+    private IAlumnoService alumnoService;
 
-	@PostMapping("/inscribir")
-	public String getInscribirAlumno(@RequestParam(value = "alumnoId", required = false) Long alumnoId,
-	        @RequestParam(value = "materiaId", required = false) Integer materiaId,
-	        RedirectAttributes redirectAttributes) {
-	    if (alumnoId == null || materiaId == null) {
-	        redirectAttributes.addFlashAttribute("errorMessage", "No se seleccionó alumno y/o materia.");
-	        return "redirect:/form/inscribir";
-	    }
+    @GetMapping("/form/inscribir")
+    public String getFormularioInscripcionAlumno(Model model) {
+        List<MateriaDTO> materias = materiaService.getAllMaterias();
+        List<AlumnoDTO> alumnos = alumnoService.getAllALumnos();
+        model.addAttribute("titulo", "Inscripción Alumno");
+        model.addAttribute("alumnos", alumnos);
+        model.addAttribute("materias", materias);
+        return "consulta/inscripcionMateria";
+    }
+    
+    @PostMapping("/form/inscribir")
+    public String getInscribirAlumno(@RequestParam(value = "alumnoId", required = false) Long alumnoId,
+                                     @RequestParam(value = "materiaId", required = false) Integer materiaId,
+                                     RedirectAttributes redirectAttributes) {
+        if (alumnoId == null || materiaId == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "No se seleccionó alumno y/o materia.");
+            return "redirect:/form/inscribir";
+        }
 
-	    Alumno alumno = alumnoMapper.toAlumno(alumnoService.buscarAlumno(alumnoId));
-	    Materia materia = materiaMapper.toMateria(materiaService.buscarMateria(materiaId));
+        Alumno alumno = alumnoMapper.toAlumno(alumnoService.buscarAlumno(alumnoId));
+        Materia materia = materiaMapper.toMateria(materiaService.buscarMateria(materiaId));
 
-	    if (alumno != null && materia != null) {
-	        alumno.getMaterias().add(materia);
-	        materia.getAlumnos().add(alumno);
-	        alumnoService.modificarAlumno(alumnoMapper.toAlumnoDTO(alumno));
-	        materiaService.modificarMateria(materiaMapper.toMateriaDTO(materia));
-	        redirectAttributes.addFlashAttribute("successMessage", "¡Se inscribió al alumno correctamente!");
-	    } else {
-	        redirectAttributes.addFlashAttribute("errorMessage", "Error al inscribir el alumno en la materia.");
-	    }
+        if (alumno != null && materia != null) {
+            alumno.getMaterias().add(materia);
+            materia.getAlumnos().add(alumno);
+            alumnoService.modificarAlumno(alumnoMapper.toAlumnoDTO(alumno));
+            materiaService.modificarMateria(materiaMapper.toMateriaDTO(materia));
+            redirectAttributes.addFlashAttribute("successMessage", "¡Se inscribió al alumno correctamente!");
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Error al inscribir el alumno en la materia.");
+        }
 
-	    return "redirect:/form/inscribir";
-	}
-
+        return "redirect:/form/inscribir";
+    }
+    
+    
 }

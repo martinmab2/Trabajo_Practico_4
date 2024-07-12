@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Materia;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,7 @@ public class CarreraDTO {
     private int cantidadAnios;
 
     private boolean estado;
-
+    
+    private List<Alumno> alumnos;
     private List<Materia> materias;
 }

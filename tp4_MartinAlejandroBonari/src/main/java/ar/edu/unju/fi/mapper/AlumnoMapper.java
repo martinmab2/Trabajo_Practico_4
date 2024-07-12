@@ -20,7 +20,6 @@ public interface AlumnoMapper {
 	@Mapping(source = "fechaNacimiento", target = "fechaNacimiento", dateFormat = "yyyy-MM-dd")
 	@Mapping(source = "domicilio", target = "domicilio")
 	@Mapping(source = "LU", target = "LU")
-	@Mapping(source = "carrera", target = "carrera")
 	@Mapping(source = "estado", target = "estado")
 	
 	AlumnoDTO toAlumnoDTO(Alumno alumno);

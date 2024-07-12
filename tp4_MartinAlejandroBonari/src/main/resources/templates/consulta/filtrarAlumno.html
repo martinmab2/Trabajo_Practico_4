@@ -10,31 +10,26 @@
 			<div class="col-md-8 col-lg-6">
 				<div class="card shadow-sm">
 					<div class="card-body">
-						<h2 class="text-center display-6 mb-4">Filtrar Alumnos por Materia</h2>
-						<form class="needs-validation" th:action="@{/filtro/alumnos}" method="post" id="filterForm"
-							novalidate>
+						<h2 class="text-center display-6 mb-4">Filtrar Alumnos por
+							Materia</h2>
+						<form class="needs-validation" th:action="@{/alumno/filtrar}"
+							method="post" novalidate>
 							<div class="mb-3">
-								<label for="floatingMateria" class="form-label"> <i class="fas fa-book me-1"></i>
-									Materia</label>
-								<select class="form-select" id="floatingMateria" name="materia"
-									aria-label="Seleccionar Materia">
-									<option value="">Selecciona una materia</option>
-									<option th:each="materia : ${materias}" th:value="${materia.id}"
-										th:text="${materia.nombre}"></option>
+								<label for="materiaId" class="form-label"><i
+									class="fas fa-book me-1"></i> Materia</label> <select id="materiaId"
+									name="materiaId" class="form-select">
+									<option th:each="materia : ${materias}"
+										th:value="${materia.id}" th:text="${materia.nombre}"></option>
 								</select>
 							</div>
 
-							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-								<div>
-									<button class="btn btn-primary me-2" type="submit">
-										<i class="fas fa-filter me-1"></i> Filtrar Alumnos
-									</button>
-								</div>
-								<div>
-									<a class="btn btn-secondary" href="/alumno/listado">
-										<i class="fas fa-times me-1"></i>Cancelar
-									</a>
-								</div>
+							<div class="gap-2 d-flex justify-content-end">
+								<button class="btn btn-primary" type="submit">
+									<i class="fas fa-clipboard-check me-1"></i> Inscribir
+								</button>
+								<a th:href="@{/alumno/listado}" class="btn btn-secondary ms-2">
+									<i class="fas fa-times me-1"></i> Cancelar
+								</a>
 							</div>
 						</form>
 						<div class="mt-5" th:if="${alumnos != null}">
@@ -46,12 +41,12 @@
 											<div class="text-end">
 												<i class="fas fa-user fa-2x text-primary"></i>
 											</div>
-											<h5 class="card-title text-end text-muted" th:text="${alumno.LU}"></h5>
-											<h5 class="card-title" th:text="${alumno.apellido + ', ' + alumno.nombre}">
-											</h5>
+											<h5 class="card-title text-end text-muted"
+												th:text="${alumno.LU}"></h5>
+											<h5 class="card-title"
+												th:text="${alumno.apellido + ', ' + alumno.nombre}"></h5>
 											<p class="list-group-item">
-												<strong>DNI:</strong>
-												<span th:text="${alumno.dni}"></span>
+												<strong>DNI:</strong> <span th:text="${alumno.dni}"></span>
 											</p>
 										</div>
 									</div>
@@ -67,7 +62,8 @@
 		</div>
 	</main>
 	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-	<script data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+	<script data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"
+		type="text/javascript"></script>
 </body>
 
 </html>
